@@ -19,7 +19,7 @@ const LandingPage = () => {
   // const isMobile = useMediaQuery({
   //   query: "(max-width:767px)",
   // });
-
+  // test 커밋
   return (
     <>
       <div className={classes.mainLayout}>
