@@ -13,18 +13,17 @@ const NameCard = () => {
         <h1 style={{ paddingLeft: "10px" }}>최근 업데이트 명함</h1>
         <Swiper
           spaceBetween={30}
-          slidesPerView={1.5}
+          slidesPerView={1.2}
           style={{
-            padding: "10px",
-
+            padding: "1vh",
           }}
         >
           {/*Array를 이용하여 반복 */}
           {Array.from({ length: 4 }, (_, index) => (
             <SwiperSlide key={index} className={classes.NameCardDiv}>
               <div style={{  height: "100%", width: "100%" }}>
-                <div style={{  marginTop: "0.9vw", marginLeft: "0.8vw", fontWeight: "bold" }}>INTROME {index + 1}</div>
-                <div style={{  marginTop: "1vw", marginLeft: "0.8vw" }}>
+                <div style={{  marginTop: "3vh", marginLeft: "2.5vh", fontWeight: "bold" }}>INTROME {index + 1}</div>
+                <div style={{  marginTop: "3vh", marginLeft: "2.5vh" }}>
                   {/*MainBanner와 마찬가지로 M,E,F에 관한 값을 받아와야함 */}
                   <div style={{ }}>M: 010-0000-0000</div>
                   <div style={{ }}>E: dlwjddnr@naver.com</div>

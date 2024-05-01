@@ -10,7 +10,7 @@ const NewProject = () => {
         <h1 style={{paddingLeft:"10px"}}>새 프로젝트</h1>
         <Swiper
           spaceBetween={20}
-          slidesPerView={3}
+          slidesPerView={2}
           style={{
             padding: "10px",
           }}

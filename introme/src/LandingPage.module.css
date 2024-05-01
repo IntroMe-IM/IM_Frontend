@@ -1,8 +1,8 @@
 .mainLayout{
   border: 1px solid #dddddd;
-  margin: 30px auto 30px;
-  height:1000px; 
-  width:500px;
+  margin: 10px auto 30px;
+  height:150vh; 
+  width:48vh;
   border-radius:20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   /*LandingPage안에 있는 컴포넌트들을 안에 자연스럽게 집어넣기 위한 overflow */
