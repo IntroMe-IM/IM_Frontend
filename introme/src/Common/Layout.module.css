@@ -18,7 +18,7 @@
 .teamSpaceLayout{
   border: 1px solid #dddddd;
   margin: 10px auto 30px;
-  height:95vh; 
+  height:100vh; 
   width:48vh;
   border-radius:20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -59,3 +59,4 @@
   color: #fff;
   text-decoration: none;
 }
+

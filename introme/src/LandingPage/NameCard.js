@@ -10,12 +10,13 @@ const NameCard = () => {
   return (
     <>
       <div style={{ paddingLeft: "10px" }}>
-        <h2 style={{ paddingLeft: "10px" }}>최근 업데이트 명함</h2>
+        <p style={{ paddingLeft: "10px" , marginTop:"4vh",fontSize:"20px",fontWeight:"bold"}}>최근 업데이트 명함</p>
         <Swiper
           spaceBetween={20}
           slidesPerView={1.4}
           style={{
             padding: "1vh",
+            marginTop:"-2vh"
           }}
         >
           {/*Array를 이용하여 반복 */}
