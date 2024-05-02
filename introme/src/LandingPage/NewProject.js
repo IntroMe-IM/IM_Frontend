@@ -7,12 +7,13 @@ const NewProject = () => {
   return (
     <>
       <div style={{paddingLeft:"10px"}}>
-        <h1 style={{paddingLeft:"10px"}}>새 프로젝트</h1>
+        <h2 style={{paddingLeft:"10px"}}>새 프로젝트</h2>
         <Swiper
-          spaceBetween={20}
-          slidesPerView={2}
+          spaceBetween={10}
+          slidesPerView={3.2}
           style={{
             padding: "10px",
+            // border:"1px solid black"
           }}
         >
           {/*Array를 이용하여 반복 */}

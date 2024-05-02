@@ -1,8 +1,8 @@
 .NewProjectDiv{
-  height:20vh;
-  width:20vh;
-  border-radius:30px;
+  height:13vh;
+  width:13vh;
+  border-radius:10px;
   text-align:center;
   align-content: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0.5px 5px rgba(0, 0, 0, 0.3);
 }

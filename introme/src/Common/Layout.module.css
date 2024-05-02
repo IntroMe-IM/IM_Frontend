@@ -1,22 +1,24 @@
 .mainLayout{
   border: 1px solid #dddddd;
-  margin: 10px auto 30px;
-  height:150vh; 
-  width:48vh;
-  border-radius:20px;
+  /* margin: 10px auto 30px; */
+  height:95vh; 
+  width:100%;
+  /* border-radius:20px; */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   /*LandingPage안에 있는 컴포넌트들을 안에 자연스럽게 집어넣기 위한 overflow */
   overflow: hidden;
   display: flex;
   flex-direction: column;
   /*각각의 컴포넌트들의 간격 지정*/
-  gap:65px
+  gap:0.5vh;
 }
+
+
 
 .teamSpaceLayout{
   border: 1px solid #dddddd;
   margin: 10px auto 30px;
-  height:150vh; 
+  height:95vh; 
   width:48vh;
   border-radius:20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -26,4 +28,34 @@
   flex-direction: column;
   /*각각의 컴포넌트들의 간격 지정*/
   /* gap:65px */
+}
+
+/* 하단 네비게이션 바 스타일 */
+.footerNav {
+  position: fixed;
+  bottom: 0;
+  width:100%;
+  background-color: #565252; /* 투명한 배경색 */
+  padding: 20px 0;
+  margin: 10px auto 5px;
+  border-radius: 0 0 5px 5px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
+  color: #fff;
+}
+
+.footerNav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.footerNav ul li {
+  margin: 0 10px;
+}
+
+.footerNav ul li a {
+  color: #fff;
+  text-decoration: none;
 }
