@@ -2,7 +2,7 @@ import React from "react";
 // import Box from "./Box";
 // import MainLayout from "./MainLayout";
 // import { useMediaQuery } from "react-responsive";
-import classes from "./LandingPage.module.css";
+import classes from "../Common/Layout.module.css";
 import MainBanner from "./MainBanner";
 import NewProject from "./NewProject";
 import NameCard from "./NameCard";
@@ -19,7 +19,7 @@ const LandingPage = () => {
   // const isMobile = useMediaQuery({
   //   query: "(max-width:767px)",
   // });
-
+  // test 커밋
   return (
     <>
       <div className={classes.mainLayout}>

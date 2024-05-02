@@ -1,6 +1,6 @@
 .NameCardDiv{
-  height:150px;
-  width:200px;
+  height:20vh;
+  width:20vh;
   border-radius:30px;
   display: flex;
   justify-content: center;
