@@ -1,0 +1,27 @@
+.LoginPageLogo{
+  /* border: 1px solid black; */
+  width: 100%;
+  height: 20vh;
+  margin-top: 5vh;
+  text-align: center;
+  align-content: center;
+}
+
+.LoginPageLogo p {
+  font-size: 8vh;
+  font-weight: bold;
+}
+
+.LoginPageContainer{
+  width: 45vh;
+  margin: 0 auto;
+  margin-top: 5vh;
+  text-align: center;
+}
+
+.BottomContainer{
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
