@@ -49,7 +49,7 @@ const LoginPage = () => {
           <div style={{ marginBottom: "1rem", position: "relative" }}>
             <input
               type="email"
-              placeholder="Email"
+              placeholder="이메일"
               value={email}
               onChange={handleEmailChange}
               style={{
@@ -85,7 +85,7 @@ const LoginPage = () => {
           <div style={{ marginBottom: "1rem", position: "relative" }}>
             <input
               type={showPassword ? "text" : "password"}
-              placeholder="Password"
+              placeholder="비밀번호"
               value={password}
               onChange={handlePasswordChange}
               style={{
