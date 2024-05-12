@@ -1,31 +1,38 @@
 import React from "react";
-import classes from "./Layout.module.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
+import classes from "./Layout.module.css";
 
 const NavBar = () => {
   return (
-    <>
-      <nav className={classes.footerNav}>
-        <ul>
-          <li>
-            <a href="#">홈</a>
-          </li>
-          <li>
-            <a href="#">명합지갑</a>
-          </li>
-          <li>
-            <a href="#">오픈공간</a>
-          </li>
-          <li>
-            <a href="#">내 정보</a>
-          </li>
-          <Link to="/LoginPage" style={{textDecoration: "none", color: "inherit" }}>
-            로그인
+    <nav className={classes.footerNav}>
+      <ul className={classes.navList}>
+        <div className={classes.navDiv} >
+        <li className={classes.navItem}>
+          <Link to="/" className={classes.navLink}>
+            홈
           </Link>
-        </ul>
-      </nav>
-    </>
+        </li>
+        <li className={classes.navItem}>
+          <Link to="/" className={classes.navLink}>
+            명합지갑
+          </Link>
+        </li>
+        </div>
+        <div className={` ${classes.circle}`}><div className={classes.text}>🪪</div></div>
+        <div className={classes.navDiv}>
+        <li className={classes.navItem}>
+          <Link to="/TeamSpace" className={classes.navLink}>
+            오픈공간
+          </Link>
+        </li>
+        <li className={classes.navItem}>
+          <Link to="/LoginPage" className={classes.navLink}>
+            내 정보
+          </Link>
+        </li>
+        </div>
+      </ul>
+    </nav>
   );
 };
 

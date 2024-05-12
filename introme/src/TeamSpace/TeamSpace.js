@@ -1,10 +1,9 @@
 import React from "react";
-import classes from "../Common/mainLayout.module.css"
 
 const TeamSpace = () => {
   return(
     <>
-      <div className={classes.mainLayout}>
+      <div>
         test
       </div>
     </>

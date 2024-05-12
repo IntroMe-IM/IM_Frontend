@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import LandingPage from "./LandingPage/LandingPage";
 import LoginPage from "./LoginPage/LoginPage";
 import SignupPage from "./LoginPage/SignupPage";
+import TeamSpace from "./TeamSpace/TeamSpace";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Route exact path="/" element={<LandingPage />} />
         <Route exact path="/LoginPage" element={<LoginPage />} />
         <Route exact path="/SignupPage" element={<SignupPage />} />
+        <Route exact path="/TeamSpace" element={<TeamSpace />} />
       </Routes>
     </Router>
   );
