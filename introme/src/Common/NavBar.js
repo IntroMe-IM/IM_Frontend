@@ -21,7 +21,7 @@ const NavBar = () => {
         <div className={` ${classes.circle}`}><div className={classes.text}>🪪</div></div>
         <div className={classes.navDiv}>
         <li className={classes.navItem}>
-          <Link to="/TeamSpace" className={classes.navLink}>
+          <Link to="/OpenSpace" className={classes.navLink}>
             오픈공간
           </Link>
         </li>
