@@ -23,7 +23,6 @@ const MainBanner = () => {
       <div
         style={{
           width: "100%",
-          height: "25%",
         }}
       >
         <Slider {...settings}>

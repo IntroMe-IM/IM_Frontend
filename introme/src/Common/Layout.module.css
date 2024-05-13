@@ -1,22 +1,39 @@
 .mainLayout{
   border: 1px solid #dddddd;
-  margin: 10px auto 30px;
-  height:150vh; 
-  width:48vh;
-  border-radius:20px;
+  /* margin: 10px auto 30px; */
+  height:95vh; 
+  width:100%;
+  /* border-radius:20px; */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   /*LandingPage안에 있는 컴포넌트들을 안에 자연스럽게 집어넣기 위한 overflow */
   overflow: hidden;
   display: flex;
   flex-direction: column;
   /*각각의 컴포넌트들의 간격 지정*/
-  gap:65px
+  gap:0.5vh;
 }
+
+.LoginPageLayout{
+  border: 1px solid #dddddd;
+  /* margin: 10px auto 30px; */
+  height:100vh; 
+  width:100%;
+  /* border-radius:20px; */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  /*LandingPage안에 있는 컴포넌트들을 안에 자연스럽게 집어넣기 위한 overflow */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  /*각각의 컴포넌트들의 간격 지정*/
+  gap:0.5vh;
+}
+
+
 
 .teamSpaceLayout{
   border: 1px solid #dddddd;
   margin: 10px auto 30px;
-  height:150vh; 
+  height:100vh; 
   width:48vh;
   border-radius:20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -26,4 +43,62 @@
   flex-direction: column;
   /*각각의 컴포넌트들의 간격 지정*/
   /* gap:65px */
+}
+
+/* 하단 네비게이션 바 스타일 */
+.footerNav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #FFFFFF; 
+  padding: 15px 0;
+  /* margin: 0px auto 5px; */
+  border-radius: 0 0 5px 5px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  border-top: 1px solid #BEBEBE;
+}
+
+.navList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navItem {
+  width: 9vh;
+  text-align: center;
+}
+
+.navLink {
+  text-decoration: none;
+  color: #BEBEBE;
+}
+.navDiv{
+display: flex;
+justify-content: space-around;
+width: 22vh;
+
+}
+.circle {
+  position: absolute; 
+  /* border: 1px solid black; */
+  background-color: #000000c3;
+  left: 50%;
+  transform: translate(-50%, -80%);
+  border-radius: 50%;
+  width: 7.5vh;
+  height: 7.5vh;
+}
+.text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white; 
+  /* border: 1px solid wheat; */
+  /* width: 4.4vh; */
+  font-size: 2rem;
+  text-align: center;
 }
