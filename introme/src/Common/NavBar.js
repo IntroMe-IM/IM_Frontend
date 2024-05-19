@@ -1,6 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import classes from "./Layout.module.css";
+import mainIcon from "../Icon/mainIcon.png";
+import homeIcon from "../Icon/homeIcon.png";
+import nameCard from "../Icon/nameCard.png";
+import openChat from "../Icon/openChat.png";
+import myInfo from "../Icon/myInfo.png";
 
 const NavBar = () => {
   return (
@@ -9,25 +14,25 @@ const NavBar = () => {
         <div className={classes.navDiv} >
         <li className={classes.navItem}>
           <Link to="/" className={classes.navLink}>
-            홈
+            <img src={homeIcon} alt="homeIcon" style={{ width: '75%', height: 'auto' }}/>
           </Link>
         </li>
         <li className={classes.navItem}>
           <Link to="/" className={classes.navLink}>
-            명합지갑
+          <img src={nameCard} alt="nameCard" style={{ width: '63%', height: 'auto'}}/>
           </Link>
         </li>
         </div>
-        <div className={` ${classes.circle}`}><div className={classes.text}>🪪</div></div>
+        <img src={mainIcon} className={` ${classes.circle}`} alt="메인 아이콘"></img>
         <div className={classes.navDiv}>
         <li className={classes.navItem}>
           <Link to="/OpenSpace" className={classes.navLink}>
-            오픈공간
+          <img src={openChat} alt="openChat" style={{ width: '65%', height: 'auto' }}/>
           </Link>
         </li>
         <li className={classes.navItem}>
           <Link to="/LoginPage" className={classes.navLink}>
-            내 정보
+          <img src={myInfo} alt="myInfo" style={{ width: '55%', height: 'auto'}}/>
           </Link>
         </li>
         </div>

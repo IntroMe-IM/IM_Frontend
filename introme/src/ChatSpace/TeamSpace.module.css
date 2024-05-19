@@ -19,3 +19,21 @@
   text-decoration: none;
   color: #BEBEBE;
 }
+
+.spaceDisable > div {
+  display: flex; 
+  align-items: center; 
+}
+
+.spaceDisable img {
+  margin-right: 0.2em; 
+}
+
+.spaceEnable > div {
+  display: flex; 
+  align-items: center; 
+}
+
+.spaceEnable img {
+  margin-right: 0.2em; 
+}
