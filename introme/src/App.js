@@ -5,6 +5,8 @@ import LoginPage from "./LoginPage/LoginPage";
 import SignupPage from "./LoginPage/SignupPage";
 import OpenSpace from "./ChatSpace/OpenSpace";
 import TeamSpace from "./ChatSpace/TeamSpace";
+import CreateProject from "./ChatSpace/CreateProject";
+import CreateChat from "./ChatSpace/CreateChat";
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
         <Route exact path="/SignupPage" element={<SignupPage />} />
         <Route exact path="/OpenSpace" element={<OpenSpace />} />
         <Route exact path="/TeamSpace" element={<TeamSpace />} />
+        <Route exact path="/CreateProject" element={<CreateProject/>} />
+        <Route exact path="/CreateChat" element={<CreateChat/>} />
       </Routes>
     </Router>
   );

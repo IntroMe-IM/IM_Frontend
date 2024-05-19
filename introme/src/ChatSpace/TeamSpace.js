@@ -3,6 +3,10 @@ import NavBar from "../Common/NavBar";
 import classes from "../Common/Layout.module.css";
 import classesTeam from "./TeamSpace.module.css";
 import { Link } from "react-router-dom";
+import openSpace from "../Icon/openSpace.png";
+import teamSpace_B from "../Icon/teamSpace_B.png";
+import personIcon from "../Icon/personIcon.png";
+import newproject from "../Icon/newProject.png"
 
 const TeamSpace = () => {
   return (
@@ -17,15 +21,32 @@ const TeamSpace = () => {
           }}
         >
           <Link to="/OpenSpace" className={classesTeam.spaceDisable}>
-          🔊 오픈 스페이스
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <img src={openSpace} alt="openSpace" />
+              오픈 스페이스
+            </div>
           </Link>
           <Link to="/TeamSpace" className={classesTeam.spaceEnable}>
-          👬 팀 스페이스
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <img src={teamSpace_B} alt="teamSpace_B" /> 팀 스페이스
+            </div>
           </Link>
         </div>
         {/*팀 스페이스 작성글 */}
         <div style={{ marginTop: "1vh" }}>
-          {Array.from({ length: 4 }, (_, index) => (
+          {Array.from({ length: 5 }, (_, index) => (
             <div
               style={{
                 borderBottom: "1px solid black",
@@ -35,7 +56,7 @@ const TeamSpace = () => {
                 display: "felx",
               }}
             >
-              <div style={{  display: "flex" }}>
+              <div style={{ display: "flex" }}>
                 {/*사진 div */}
                 <div
                   style={{
@@ -48,7 +69,7 @@ const TeamSpace = () => {
                 ></div>
 
                 {/*내용div*/}
-                <div style={{padding:"1vh" }}>
+                <div style={{ padding: "1vh" }}>
                   <div
                     style={{
                       fontWeight: "bold",
@@ -71,11 +92,22 @@ const TeamSpace = () => {
                   </div>
                 </div>
                 {/*인원 수 div */}
-                <div style={{ width:"9vh",textAlign:"right"}}><p style={{marginLeft:"3vh"}}>🧍: 3</p></div>
+                <div style={{ width: "9vh" }}>
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "center"}}>
+                    <img
+                      src={personIcon}
+                      alt="personIcon"
+                    />
+                    <p style={{ margin: 0 }}>: 3</p>
+                  </div>
+                </div>
               </div>
             </div>
           ))}
         </div>
+        <Link to="/CreateProject">
+        <img src={newproject} className={classesTeam.creatProject} alt="newProject" />
+        </Link>
         <NavBar />
       </div>
     </>

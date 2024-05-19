@@ -19,3 +19,28 @@
   text-decoration: none;
   color: #BEBEBE;
 }
+
+.spaceDisable > div {
+  display: flex; 
+  align-items: center; 
+}
+
+.spaceDisable img {
+  margin-right: 0.2em; 
+}
+
+.spaceEnable > div {
+  display: flex; 
+  align-items: center; 
+}
+
+.spaceEnable img {
+  margin-right: 0.2em; 
+}
+
+.creatProject {
+  position: fixed;
+  bottom: 10vh; 
+  right: 1.5vh; 
+  z-index: 999; 
+}
