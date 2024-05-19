@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import openSpace from "../Icon/openSpace.png";
 import teamSpace_B from "../Icon/teamSpace_B.png";
 import personIcon from "../Icon/personIcon.png";
+import newproject from "../Icon/newProject.png"
 
 const TeamSpace = () => {
   return (
@@ -45,7 +46,7 @@ const TeamSpace = () => {
         </div>
         {/*팀 스페이스 작성글 */}
         <div style={{ marginTop: "1vh" }}>
-          {Array.from({ length: 4 }, (_, index) => (
+          {Array.from({ length: 5 }, (_, index) => (
             <div
               style={{
                 borderBottom: "1px solid black",
@@ -104,6 +105,9 @@ const TeamSpace = () => {
             </div>
           ))}
         </div>
+        <Link to="/CreateProject">
+        <img src={newproject} className={classesTeam.creatProject} alt="newProject" />
+        </Link>
         <NavBar />
       </div>
     </>

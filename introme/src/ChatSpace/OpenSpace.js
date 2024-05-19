@@ -5,6 +5,7 @@ import classesOpen from "./OpenSpace.module.css";
 import { Link } from "react-router-dom";
 import openSpace_B from "../Icon/openSpace_B.png";
 import teamSpace from "../Icon/teamSpace.png";
+import newproject from "../Icon/newProject.png";
 
 const OpenSpace = () => {
   return (
@@ -26,7 +27,7 @@ const OpenSpace = () => {
                 justifyContent: "center",
               }}
             >
-              <img src={openSpace_B} alt="openSpace_B"/>
+              <img src={openSpace_B} alt="openSpace_B" />
               오픈 스페이스
             </div>
           </Link>
@@ -62,6 +63,9 @@ const OpenSpace = () => {
             </div>
           ))}
         </div>
+        <Link to="/CreateChat">
+        <img src={newproject} className={classesOpen.creatProject} alt="newProject" />
+        </Link>
         <NavBar />
       </div>
     </>
