@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 const SignupPage = () => {
   const [name, setName] = useState("");
@@ -29,6 +30,7 @@ const SignupPage = () => {
 
   const handlePhoneNumber = (e) => {
     setPhoneNumber(e.target.value);
+
   };
 
   const handleName = (e) => {
@@ -43,8 +45,33 @@ const SignupPage = () => {
     setConfirmPhoneNumber(e.target.value);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  // axios 연결 코드
+  const handleSubmit = async (e) => {
+    if (password !== confirmPassword) {
+      alert("비밀번호 확인과 맞게 기입해주시요!");
+      return;
+    }
+
+    try {
+      const response = await axios.post("http://localhost:3000/v1/member/signup", {
+        name,
+        birthday: birthdate,
+        email,
+        password,
+        phoneNumber,
+        organization: "test",
+        url: "https://introme.co.kr",
+      });
+
+      if (response.status === 201) {
+        alert("성공");
+        console.log("성공!!")
+      } else {
+        alert("실패");
+      }
+    } catch (error) {
+      alert("등록 실패: " + error.message);
+    }
   };
 
   return (
@@ -52,7 +79,6 @@ const SignupPage = () => {
       {/*헤더 부분*/}
       <div
         style={{
-          // border: "1px solid black",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -125,7 +151,7 @@ const SignupPage = () => {
             }}
           >
             <input
-              type="number"
+              type="date"
               placeholder="생년월일"
               value={birthdate}
               onChange={handleBirthdate}
@@ -253,10 +279,12 @@ const SignupPage = () => {
             }}
           >
             <input
-              type="number"
+              type="tel"
               placeholder="휴대폰"
               value={phoneNumber}
+              pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
               onChange={handlePhoneNumber}
+              maxLength={11}
               style={{
                 width: "calc(100% - 19.6vh)",
                 padding: "0.5rem",
