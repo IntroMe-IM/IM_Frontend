@@ -45,7 +45,7 @@ const SignupPage = () => {
     setConfirmPhoneNumber(e.target.value);
   };
 
-  // axios 연결 코드
+  // axios 연결 코드 비빌번호 8자리 이상
   const handleSubmit = async (e) => {
 
     e.preventDefault(); 
