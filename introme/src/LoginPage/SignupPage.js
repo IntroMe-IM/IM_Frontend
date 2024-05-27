@@ -47,30 +47,50 @@ const SignupPage = () => {
 
   // axios 연결 코드
   const handleSubmit = async (e) => {
+
+    e.preventDefault(); 
     if (password !== confirmPassword) {
       alert("비밀번호 확인과 맞게 기입해주시요!");
       return;
     }
 
     try {
-      const response = await axios.post("http://localhost:3000/v1/member/signup", {
-        name,
-        birthday: birthdate,
-        email,
+      const response = await axios.post("https://introme.co.kr/v1/member/signup", {
         password,
+        email,
+        name,
+        organization: "string",
         phoneNumber,
-        organization: "test",
-        url: "https://introme.co.kr",
+        url: "string",
+        birthday: new Date(birthdate).toISOString(),
+      }, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
       });
 
-      if (response.status === 201) {
+      if (response.status === 200) {
         alert("성공");
         console.log("성공!!")
       } else {
         alert("실패");
       }
     } catch (error) {
-      alert("등록 실패: " + error.message);
+      if (error.response) {
+        // 서버가 응답했지만 상태 코드가 2xx 범위에 있지 않음
+        alert("등록 실패: " + (error.response.data.message || "서버 에러"));
+        console.error(error.response.data); // 서버 응답 데이터 출력
+      } else if (error.request) {
+        // 요청이 전송되었지만 응답이 없음
+        alert("등록 실패: 서버로부터 응답이 없습니다.");
+        console.error(error.request);
+      } else {
+        // 요청 설정 중에 발생한 문제
+        alert("등록 실패: " + error.message);
+        console.error('Error', error.message);
+      }
+      console.error(error.config);
     }
   };
 
@@ -282,7 +302,7 @@ const SignupPage = () => {
               type="tel"
               placeholder="휴대폰"
               value={phoneNumber}
-              pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
+              // pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
               onChange={handlePhoneNumber}
               maxLength={11}
               style={{
