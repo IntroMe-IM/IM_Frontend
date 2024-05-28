@@ -11,31 +11,29 @@ const NavBar = () => {
   return (
     <nav className={classes.footerNav}>
       <ul className={classes.navList}>
-        <div className={classes.navDiv} >
         <li className={classes.navItem}>
           <Link to="/" className={classes.navLink}>
-            <img src={homeIcon} alt="homeIcon" style={{ width: '75%', height: 'auto' }}/>
+            <img src={homeIcon} alt="homeIcon" style={{ width: '75%', height: 'auto' }} />
           </Link>
         </li>
         <li className={classes.navItem}>
-          <Link to="/" className={classes.navLink}>
-          <img src={nameCard} alt="nameCard" style={{ width: '63%', height: 'auto'}}/>
+          <Link to="/Wallet" className={classes.navLink}>
+            <img src={nameCard} alt="nameCard" style={{ width: '63%', height: 'auto' }} />
           </Link>
         </li>
-        </div>
-        <img src={mainIcon} className={` ${classes.circle}`} alt="메인 아이콘"></img>
-        <div className={classes.navDiv}>
+        <li className={classes.navItem}>
+          <img src={mainIcon} className={` ${classes.circle}`} alt="메인 아이콘" />
+        </li>
         <li className={classes.navItem}>
           <Link to="/OpenSpace" className={classes.navLink}>
-          <img src={openChat} alt="openChat" style={{ width: '65%', height: 'auto' }}/>
+            <img src={openChat} alt="openChat" style={{ width: '65%', height: 'auto' }} />
           </Link>
         </li>
         <li className={classes.navItem}>
           <Link to="/LoginPage" className={classes.navLink}>
-          <img src={myInfo} alt="myInfo" style={{ width: '55%', height: 'auto'}}/>
+            <img src={myInfo} alt="myInfo" style={{ width: '55%', height: 'auto' }} />
           </Link>
         </li>
-        </div>
       </ul>
     </nav>
   );
