@@ -22,6 +22,9 @@ const SignupPage = () => {
 
   const handlePassword = (e) => {
     setPassword(e.target.value);
+    // if(e.target.value.length < 8 ||  e.target.value.length < 12) {
+    //   alert("8자리 이상 12자리 이하로 작성해주세요!")
+    // }
   };
 
   const handleConfirmPassword = (e) => {
@@ -45,7 +48,7 @@ const SignupPage = () => {
     setConfirmPhoneNumber(e.target.value);
   };
 
-  // axios 연결 코드
+  // axios 연결 코드 비빌번호 8자리 이상
   const handleSubmit = async (e) => {
 
     e.preventDefault(); 

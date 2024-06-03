@@ -7,6 +7,8 @@ import OpenSpace from "./ChatSpace/OpenSpace";
 import TeamSpace from "./ChatSpace/TeamSpace";
 import CreateProject from "./ChatSpace/CreateProject";
 import CreateChat from "./ChatSpace/CreateChat";
+import UpdateChat from "./ChatSpace/UpdateChat";
+import UpdateProject from "./ChatSpace/UpdateProject";
 import Wallet from "./WalletPage/Wallet";
 
 function App() {
@@ -20,6 +22,8 @@ function App() {
         <Route exact path="/TeamSpace" element={<TeamSpace />} />
         <Route exact path="/CreateProject" element={<CreateProject />} />
         <Route exact path="/CreateChat" element={<CreateChat />} />
+        <Route exact path="/UpdateProject" element={<UpdateProject />} />
+        <Route exact path="/UpdateChat" element={<UpdateChat />} />
         <Route exact path="/Wallet" element={<Wallet />} />
       </Routes>
     </Router>
