@@ -14,14 +14,13 @@ const cardsData = [
 ];
 
 function Wallet() {
-    const [expandedCard, setExpandedCard] = useState(null);
+    const [extraExpandedCard, setExtraExpandedCard] = useState(null);
 
-    const expandCard = (cardId) => {
-        setExpandedCard(expandedCard === cardId ? null : cardId);
+    const toggleCard = (cardId) => {
+        setExtraExpandedCard(extraExpandedCard === cardId ? null : cardId);
     };
 
     return (
-
         <div className="main">
             <div className="wallet">
                 {cardsData.map((card, index) => (
@@ -29,16 +28,13 @@ function Wallet() {
                         key={card.id}
                         card={card}
                         index={index}
-                        expanded={expandedCard === card.id}
-                        expandCard={expandCard}
+                        extraExpanded={extraExpandedCard === card.id}
+                        toggleCard={toggleCard}
                     />
                 ))}
             </div>
             <NavBar />
         </div>
-
-
-
     );
 }
 

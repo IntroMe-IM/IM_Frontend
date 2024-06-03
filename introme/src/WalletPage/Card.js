@@ -1,21 +1,17 @@
 import React, { useRef, useEffect } from 'react';
 
-function Card({ card, index, expanded, expandCard }) {
+function Card({ card, index, extraExpanded, toggleCard }) {
     const cardRef = useRef(null);
 
     useEffect(() => {
-        if (expanded) {
-            cardRef.current.style.top = `${index * 60}px`;
-        } else {
-            cardRef.current.style.top = `${index * 60}px`;
-        }
-    }, [expanded, index]);
+        cardRef.current.style.zIndex = extraExpanded ? 20 : index;
+    }, [extraExpanded, index]);
 
     return (
         <div
             ref={cardRef}
-            className={`card ${card.className} ${expanded ? 'expanded' : ''}`}
-            onClick={() => expandCard(card.id)}
+            className={`card ${card.className} ${extraExpanded ? 'extra-expanded' : ''}`}
+            onClick={() => toggleCard(card.id)}
         >
             <div className="card-content">{card.content}</div>
         </div>
