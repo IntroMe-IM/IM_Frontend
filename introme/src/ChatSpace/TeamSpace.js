@@ -46,7 +46,9 @@ const TeamSpace = () => {
         </div>
         {/*팀 스페이스 작성글 */}
         <div style={{ marginTop: "1vh" }}>
+          
           {Array.from({ length: 5 }, (_, index) => (
+            // <Link to="/ViewProject"> 이런 식으로 넘기고 자신이 보는건 수정 버튼이 있게, 아닌건 없게 만들면될듯?
             <div
               style={{
                 borderBottom: "1px solid black",
@@ -79,7 +81,7 @@ const TeamSpace = () => {
                   >
                     IntroMe
                   </div>
-                  <div style={{ padding: "0.5vh" }}>
+                  <div style={{ padding: "0.5vh",width:"13vh" }}>
                     <div style={{ color: "gray", fontSize: "0.8rem" }}>
                       03월12일~진행중
                     </div>

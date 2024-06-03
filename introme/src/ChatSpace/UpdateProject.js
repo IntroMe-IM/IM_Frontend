@@ -1,17 +1,14 @@
 import React from "react";
 import classes from "../Common/Layout.module.css";
 import cancleButton from "../Icon/cancleButton.png";
-import createButton from "../Icon/createButton.png";
+import updateButton from "../Icon/updateButton.png";
 import { Link } from "react-router-dom";
 
 const CreateProject = () => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
+
   return (
     <>
       <div className={classes.createChatLayout}>
-        <form onSubmit={handleSubmit}>
           <p
             style={{
               marginTop: "5vh",
@@ -23,7 +20,7 @@ const CreateProject = () => {
             새 프로젝트
           </p>
           <div style={{ margin: "4vh" }}>
-            <input
+            <div
               placeholder="팀명 입력"
               style={{
                 border: "none",
@@ -32,12 +29,13 @@ const CreateProject = () => {
                 boxShadow: "none",
                 outline: "none",
                 width: "calc(100% - 30px)",
+                marginTop:"-3rem",
                 padding: "0.5rem",
               }}
-            ></input>
+            > 제목 입력 칸</div>
           </div>
           <div style={{ margin: "4vh" }}>
-            <input
+            <div
               placeholder="프로젝트명 입력"
               style={{
                 border: "none",
@@ -46,13 +44,14 @@ const CreateProject = () => {
                 boxShadow: "none",
                 outline: "none",
                 width: "calc(100% - 30px)",
+                marginTop:"-3rem",
                 padding: "0.5rem",
               }}
-            ></input>
+            >프로젝트 내용 칸</div>
           </div>
 
           <div style={{ margin: "4vh" }}>
-            <textarea
+            <div
               placeholder="프로젝트를 설명해주세요!"
               style={{
                 border: "none",
@@ -65,19 +64,19 @@ const CreateProject = () => {
                 minHeight: "30vh",
                 maxHeight: "30vh",
                 resize: "none",
+                marginTop:"-3rem",
                 overflowY: "hidden",
               }}
-            ></textarea>
+            >프로젝트 설명 내용</div>
           </div>
           <div style={{ display: "grid", placeItems: "center" }}>
             <Link to="/TeamSpace">
-              <img src={createButton} style={{ margin: "1vh" }} />
+              <img src={updateButton} style={{ margin: "1vh" }} />
             </Link>
             <Link to="/TeamSpace">
               <img src={cancleButton} />
             </Link>
           </div>
-        </form>
       </div>
     </>
   );
