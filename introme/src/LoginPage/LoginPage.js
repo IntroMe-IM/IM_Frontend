@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 //Common으로 사용하는 전체 레이아웃
 import classes from "../Common/Layout.module.css";
 //LoginPage에서만 사용하는 css
@@ -11,6 +11,8 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [autoLogin, setAutoLogin] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -49,7 +51,8 @@ const LoginPage = () => {
 
       if (response.status === 200) {
         alert("성공");
-        console.log("성공!!"+ response.data.name);
+        console.log("성공!!");
+        navigate("/");
       } else {
         alert("실패");
       }

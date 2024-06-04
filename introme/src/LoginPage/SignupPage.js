@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate} from "react-router-dom";
 import axios from "axios";
 
 const SignupPage = () => {
@@ -11,6 +12,8 @@ const SignupPage = () => {
   const [confirmPhoneNumber, setConfirmPhoneNumber] = useState("");
 
   const [showPassword, setShowPassword] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleBirthdate = (e) => {
     setBirthdate(e.target.value);
@@ -76,6 +79,7 @@ const SignupPage = () => {
       if (response.status === 200) {
         alert("성공");
         console.log("성공!!")
+        navigate("/LoginPage");
       } else {
         alert("실패");
       }
