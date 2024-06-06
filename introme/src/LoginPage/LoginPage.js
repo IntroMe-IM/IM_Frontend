@@ -14,7 +14,7 @@ const LoginPage = () => {
   const [autoLogin, setAutoLogin] = useState(false);
   const { setMember } = useContext(MemberContext);
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -33,12 +33,7 @@ const LoginPage = () => {
   };
 
   const handleSubmit = async (e) => {
-
     e.preventDefault();
-    // if (password !== confirmPassword) {
-    //   alert("비밀번호 확인과 맞게 기입해주시요!");
-    //   return;
-    // }
 
     try {
       const response = await axios.post("https://introme.co.kr/v1/member/signin", {
@@ -55,6 +50,7 @@ const LoginPage = () => {
         const member = response.data.member;
         setMember(member);
         alert(`환영합니다 ${member.name}님!`);
+        navigate("/"); // 로그인 성공 시 메인 페이지로 이동
       } else {
         alert("로그인 실패");
       }

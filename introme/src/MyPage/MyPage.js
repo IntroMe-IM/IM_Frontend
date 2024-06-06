@@ -8,7 +8,7 @@ import mypageIcon3 from "../Icon/mypageIcon3.png";
 import mypageIcon4 from "../Icon/mypageIcon4.png";
 import mypageIcon5 from "../Icon/mypageIcon5.png";
 import mypageIcon6 from "../Icon/mypageIcon6.png";
-import myIcon from "../Icon/myIcon.png";
+// import myIcon from "../Icon/myIcon.png";
 
 const MyPage = () => {
   const mypageIcons = [
@@ -111,6 +111,7 @@ const MyPage = () => {
         <img
           src={mypagebanner}
           style={{ margin: "0 auto", width: "80%", marginTop: "1.5vh" }}
+          alt="pagebanner"
         />
 
         {mypageIcons.map((icon, index) => (
