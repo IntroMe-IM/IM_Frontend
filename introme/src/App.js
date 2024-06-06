@@ -10,6 +10,7 @@ import CreateChat from "./ChatSpace/CreateChat";
 import UpdateChat from "./ChatSpace/UpdateChat";
 import UpdateProject from "./ChatSpace/UpdateProject";
 import Wallet from "./WalletPage/Wallet";
+import MyPage from "./MyPage/MyPage";
 
 function App() {
   return (
@@ -25,6 +26,8 @@ function App() {
         <Route exact path="/UpdateProject" element={<UpdateProject />} />
         <Route exact path="/UpdateChat" element={<UpdateChat />} />
         <Route exact path="/Wallet" element={<Wallet />} />
+        <Route exact path="/Mypage" element={<MyPage />} />
+        
       </Routes>
     </Router>
   );
