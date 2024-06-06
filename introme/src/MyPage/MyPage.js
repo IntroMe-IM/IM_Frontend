@@ -8,6 +8,7 @@ import mypageIcon3 from "../Icon/mypageIcon3.png";
 import mypageIcon4 from "../Icon/mypageIcon4.png";
 import mypageIcon5 from "../Icon/mypageIcon5.png";
 import mypageIcon6 from "../Icon/mypageIcon6.png";
+import myIcon from "../Icon/myIcon.png";
 
 const MyPage = () => {
   const mypageIcons = [
@@ -23,46 +24,47 @@ const MyPage = () => {
       <div className={classes.MyPageLayout}>
         <div
           style={{
-            border: "1px solid black",
+            borderBottom: "1px solid black",
             height: "17vh",
+            width:"95%",
+            margin:"0 auto",
             display: "flex",
             alignItems: "center",
           }}
         >
           <div
             style={{
-              border: "1px solid black",
-              width: "15vh",
-              height: "15vh",
+              backgroundColor:"#4755D7",
+              width: "13vh",
+              height: "13vh",
               marginLeft: "4vh",
               borderRadius: "17%",
             }}
-          />
+          >
+            {/* <img src={myIcon} style={{width:"100%"}} /> */}
+            </div>
           <div
             style={{
-              border: "1px solid blue",
               height: "10vh",
               marginLeft: "2vh",
             }}
           >
             <div
               style={{
-                border: "1px solid black",
                 fontWeight: "bold",
                 margin: "0.5vh",
                 fontSize: "1.3rem",
               }}
             >
-              test
+             이정욱
             </div>
             <div
               style={{
-                border: "1px solid black",
                 margin: "0.5vh",
                 fontSize: "1.3rem",
               }}
             >
-              test1231
+              a@a.com
             </div>
           </div>
         </div>
@@ -70,10 +72,10 @@ const MyPage = () => {
           style={{
             width: "85%",
             height: "20vh",
-            border: "1px solid black",
             margin: "0 auto",
             marginTop: "1.5vh",
             borderRadius: "10px",
+            backgroundColor:"#262626"
           }}
         >
           <div style={{ height: "100%", width: "100%" }}>
@@ -82,6 +84,7 @@ const MyPage = () => {
                 marginTop: "2vh",
                 marginLeft: "2.5vh",
                 fontWeight: "bold",
+                color:"#FFFFFF"
               }}
             >
               INTROME
@@ -91,15 +94,16 @@ const MyPage = () => {
                 marginTop: "0.3vh",
                 marginLeft: "2.5vh",
                 fontWeight: "bold",
+                color:"#FFFFFF"
               }}
             >
               이정욱
             </div>
             <div style={{ marginTop: "1.5vh", marginLeft: "2.5vh" }}>
               {/*MainBanner와 마찬가지로 M,E,F에 관한 값을 받아와야함 */}
-              <div style={{}}>M: 010-0000-0000</div>
-              <div style={{}}>E: dlwjddnr@naver.com</div>
-              <div style={{}}>F: 02.0000.0000</div>
+              <div style={{color:"#FFFFFF"}}>M: 010-0000-0000</div>
+              <div style={{color:"#FFFFFF"}}>E: dlwjddnr@naver.com</div>
+              <div style={{color:"#FFFFFF"}}>F: 02.0000.0000</div>
             </div>
           </div>
         </div>

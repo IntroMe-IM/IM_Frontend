@@ -17,7 +17,7 @@ const TeamSpace = () => {
             display: "flex",
             margin: "0 auto",
             width: "95%",
-            marginTop: "7vh",
+            marginTop: "3vh",
           }}
         >
           <Link to="/OpenSpace" className={classesTeam.spaceDisable}>
@@ -81,7 +81,7 @@ const TeamSpace = () => {
                   >
                     IntroMe
                   </div>
-                  <div style={{ padding: "0.5vh",width:"13vh" }}>
+                  <div style={{ padding: "0.5vh",width:"100%" }}>
                     <div style={{ color: "gray", fontSize: "0.8rem" }}>
                       03월12일~진행중
                     </div>
