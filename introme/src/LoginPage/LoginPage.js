@@ -40,12 +40,7 @@ const LoginPage = () => {
   };
 
   const handleSubmit = async (e) => {
-
     e.preventDefault();
-    // if (password !== confirmPassword) {
-    //   alert("비밀번호 확인과 맞게 기입해주시요!");
-    //   return;
-    // }
 
     try {
       const response = await axios.post("https://introme.co.kr/v1/member/signin", {
