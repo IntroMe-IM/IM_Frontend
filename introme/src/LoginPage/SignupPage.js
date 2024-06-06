@@ -350,23 +350,23 @@ const SignupPage = () => {
               }}
               required
             />
-        <button
-          onClick={submitNum}
-          style={{
-            backgroundColor: "#4755D7",
-            color: "#fff",
-            border: "none",
-            padding: "0.5rem 1rem",
-            borderRadius: "5px",
-            width: "15vh",
-            height: "6vh",
-            margin: "0.5vh",
-            cursor: "pointer",
-          }}
-        >
-          인증번호 받기
-        </button>
-          </div>
+            <button
+              onClick={submitNum}
+              style={{
+                backgroundColor: "#4755D7",
+                color: "#fff",
+                border: "none",
+                padding: "0.5rem 1rem",
+                borderRadius: "5px",
+                width: "15vh",
+                height: "6vh",
+                margin: "0.5vh",
+                cursor: "pointer",
+              }}
+            >
+              인증번호 받기
+            </button>
+          </div >
 
           <div style={{ marginBottom: "1rem", position: "relative" }}>
             <input
@@ -402,7 +402,7 @@ const SignupPage = () => {
           >
             회원가입
           </button>
-        </form>
+        </form >
         {/* <button
           onClick={submitNum}
           style={{
@@ -419,8 +419,8 @@ const SignupPage = () => {
         >
           인증번호 받기
         </button> */}
-      </div>
-    </div>
+      </div >
+    </div >
   );
 };
 

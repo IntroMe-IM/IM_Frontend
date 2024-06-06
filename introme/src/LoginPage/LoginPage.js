@@ -1,16 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate} from "react-router-dom";
+import React, { useContext, useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 //Common으로 사용하는 전체 레이아웃
 import classes from "../Common/Layout.module.css";
 //LoginPage에서만 사용하는 css
 import classesLogin from "./LoginPage.module.css";
 import axios from "axios";
+import { MemberContext } from "../ChatSpace/MemberContext";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [autoLogin, setAutoLogin] = useState(false);
+  const { setMember } = useContext(MemberContext);
 
   const navigate = useNavigate();
 
@@ -38,12 +40,7 @@ const LoginPage = () => {
   };
 
   const handleSubmit = async (e) => {
-
-    e.preventDefault(); 
-    // if (password !== confirmPassword) {
-    //   alert("비밀번호 확인과 맞게 기입해주시요!");
-    //   return;
-    // }
+    e.preventDefault();
 
     try {
       const response = await axios.post("https://introme.co.kr/v1/member/signin", {
@@ -105,7 +102,7 @@ const LoginPage = () => {
               value={email}
               onChange={handleEmailChange}
               style={{
-                width: "calc(100% - 30px)", 
+                width: "calc(100% - 30px)",
                 padding: "0.5rem",
                 border: "none",
                 borderBottom: "1px solid black",
@@ -141,7 +138,7 @@ const LoginPage = () => {
               value={password}
               onChange={handlePasswordChange}
               style={{
-                width: "calc(100% - 30px)", 
+                width: "calc(100% - 30px)",
                 padding: "0.5rem",
                 border: "none",
                 borderBottom: "1px solid black",

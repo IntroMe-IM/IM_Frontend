@@ -8,6 +8,7 @@ import axios from "axios";
 const CreateChat = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+
   const navigate = useNavigate();
 
   const token = localStorage.getItem("token"); // 로컬 스토리지에서 토큰 가져오기
@@ -27,8 +28,8 @@ const CreateChat = () => {
       return;
     }
 
-    
 
+    
     try {
       console.log("Sending data:", {
         author: member.id,
@@ -36,14 +37,18 @@ const CreateChat = () => {
         content
       });
 
+
       const response = await axios.post("https://introme.co.kr/v1/board/", {
+
         author: member.id, // author를 member의 id로 설정합니다
         title,
         content
       }, {
         headers: {
           "Content-Type": "application/json",
+
           "Accept": "application/json",
+
         }
       });
 
