@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import NavBar from "../Common/NavBar";
 import classes from "./MyPage.module.css";
 import mypagebanner from "../Icon/mypagebanner.png";
@@ -11,14 +12,32 @@ import mypageIcon6 from "../Icon/mypageIcon6.png";
 // import myIcon from "../Icon/myIcon.png";
 
 const MyPage = () => {
+
+  const [memberInfo, setMemberInfo] = useState(null);
+
   const mypageIcons = [
     mypageIcon1,
     mypageIcon2,
     mypageIcon3,
     mypageIcon4,
-    mypageIcon5,
     mypageIcon6,
   ];
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const memberData = JSON.parse(localStorage.getItem("member"));
+    setMemberInfo(memberData);
+  }, []);
+
+  const handleLogout = () => {
+    // 로컬 스토리지에서 토큰 및 회원 정보 제거
+    localStorage.removeItem("token");
+    localStorage.removeItem("member");
+    // LoginPage 페이지로 이동
+    navigate("/LoginPage");
+  };
+
   return (
     <>
       <div className={classes.MyPageLayout}>
@@ -41,7 +60,6 @@ const MyPage = () => {
               borderRadius: "17%",
             }}
           >
-            {/* <img src={myIcon} style={{width:"100%"}} /> */}
           </div>
           <div
             style={{
@@ -61,10 +79,10 @@ const MyPage = () => {
             <div
               style={{
                 margin: "0.5vh",
-                fontSize: "1.3rem",
+                fontSize: "1rem",
               }}
             >
-              a@a.com
+              {memberInfo && memberInfo.email}
             </div>
           </div>
         </div>
@@ -97,7 +115,7 @@ const MyPage = () => {
                 color: "#FFFFFF"
               }}
             >
-              이정욱
+              {memberInfo && memberInfo.name}
             </div>
             <div style={{ marginTop: "1.5vh", marginLeft: "2.5vh" }}>
               {/*MainBanner와 마찬가지로 M,E,F에 관한 값을 받아와야함 */}
@@ -122,7 +140,7 @@ const MyPage = () => {
             alt={`Icon ${index + 1}`}
           />
         ))}
-
+        <img src={mypageIcon5} onClick={handleLogout} style={{ margin: "1vh" }} />
         <NavBar />
       </div>
     </>

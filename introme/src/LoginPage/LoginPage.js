@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 //Common으로 사용하는 전체 레이아웃
 import classes from "../Common/Layout.module.css";
@@ -15,6 +15,13 @@ const LoginPage = () => {
   const { setMember } = useContext(MemberContext);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      navigate("/Mypage");
+    }
+  }, []);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -47,12 +54,13 @@ const LoginPage = () => {
       });
 
       if (response.status === 200) {
-        const member = response.data.member;
-        setMember(member);
-        alert(`환영합니다 ${member.name}님!`);
-        navigate("/"); // 로그인 성공 시 메인 페이지로 이동
-      } else {
-        alert("로그인 실패");
+        const { member, token } = response.data;
+        // 토큰과 회원 정보를 로컬 스토리지에 저장
+        localStorage.setItem("token", token);
+        localStorage.setItem("member", JSON.stringify(member));
+        // 마이페이지로 이동
+        navigate("/Mypage");
+        alert("로그인 성공");
       }
     } catch (error) {
       if (error.response) {
@@ -80,7 +88,7 @@ const LoginPage = () => {
     <div className={classes.LoginPageLayout}>
       {/*로고*/}
       <div className={classesLogin.LoginPageLogo}>
-        <p>IntroMe</p>
+        <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}><p>IntroMe</p></Link>
       </div>
 
       {/*로그인 관련 전체 div*/}
