@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 //Common으로 사용하는 전체 레이아웃
 import classes from "../Common/Layout.module.css";
