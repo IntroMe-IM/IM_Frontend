@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import classes from "../Common/Layout.module.css"
 import cancleButton from "../Icon/cancleButton.png";
 import createButton from "../Icon/createButton.png";
-import { Link } from "react-router-dom";
+import { MemberContext } from "./MemberContext";
 
 const CreateChat = () => {
+  const { member } = useContext(MemberContext);
+
+  const handleCreateClick = () => {
+    if (member) {
+      console.log('Member in CreateChat:', member) //member확인코드
+      alert(member);
+    } else {
+      alert("로그인 정보가 없습니다.");
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
   };
@@ -20,7 +32,7 @@ const CreateChat = () => {
               fontWeight: "bold",
             }}
           >
-            오픈 챗팅
+            오픈 채팅
           </p>
           <div style={{ margin: "4vh" }}>
             <input
@@ -55,11 +67,11 @@ const CreateChat = () => {
             ></textarea>
           </div>
           <div style={{ display: "grid", placeItems: "center" }}>
-            <Link to="/OpenSpace">
-            <img src={createButton} style={{margin:"1vh"}} />
+            <Link to="/OpenSpace" onClick={handleCreateClick}>
+              <img src={createButton} style={{ margin: "1vh" }} alt="create button" />
             </Link>
             <Link to="/OpenSpace">
-            <img src={cancleButton} />
+              <img src={cancleButton} alt="cancel button" />
             </Link>
           </div>
         </form>

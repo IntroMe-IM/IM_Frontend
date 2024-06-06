@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
-//Common으로 사용하는 전체 레이아웃
+import { MemberContext } from "../ChatSpace/MemberContext"; // 경로는 실제 파일 경로에 맞게 수정하세요
 import classes from "../Common/Layout.module.css";
-//LoginPage에서만 사용하는 css
 import classesLogin from "./LoginPage.module.css";
 
 const LoginPage = () => {
@@ -10,6 +10,7 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [autoLogin, setAutoLogin] = useState(false);
+  const { setMember } = useContext(MemberContext);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -27,8 +28,40 @@ const LoginPage = () => {
     setEmail("");
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    try {
+      const response = await axios.post("https://introme.co.kr/v1/member/signin", {
+        email,
+        password
+      }, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.status === 200) {
+        const member = response.data.member;
+        setMember(member);
+        alert(`환영합니다 ${member.name}님!`);
+      } else {
+        alert("로그인 실패");
+      }
+    } catch (error) {
+      if (error.response) {
+        alert("로그인 실패: " + (error.response.data.message || "서버 에러"));
+        console.error(error.response.data);
+      } else if (error.request) {
+        alert("로그인 실패: 서버로부터 응답이 없습니다.");
+        console.error(error.request);
+      } else {
+        alert("로그인 실패: " + error.message);
+        console.error('Error', error.message);
+      }
+      console.error(error.config);
+    }
   };
 
   const handleAutoLoginChange = () => {
@@ -37,15 +70,11 @@ const LoginPage = () => {
 
   return (
     <div className={classes.LoginPageLayout}>
-      {/*로고*/}
       <div className={classesLogin.LoginPageLogo}>
         <p>IntroMe</p>
       </div>
-
-      {/*로그인 관련 전체 div*/}
       <div className={classesLogin.LoginPageContainer}>
         <form onSubmit={handleSubmit}>
-          {/*이메일 인풋박스*/}
           <div style={{ marginBottom: "1rem", position: "relative" }}>
             <input
               type="email"
@@ -53,7 +82,7 @@ const LoginPage = () => {
               value={email}
               onChange={handleEmailChange}
               style={{
-                width: "calc(100% - 30px)", 
+                width: "calc(100% - 30px)",
                 padding: "0.5rem",
                 border: "none",
                 borderBottom: "1px solid black",
@@ -81,7 +110,6 @@ const LoginPage = () => {
             )}
           </div>
 
-          {/*비밀번호 인풋박스*/}
           <div style={{ marginBottom: "1rem", position: "relative" }}>
             <input
               type={showPassword ? "text" : "password"}
@@ -89,7 +117,7 @@ const LoginPage = () => {
               value={password}
               onChange={handlePasswordChange}
               style={{
-                width: "calc(100% - 30px)", 
+                width: "calc(100% - 30px)",
                 padding: "0.5rem",
                 border: "none",
                 borderBottom: "1px solid black",
@@ -115,7 +143,6 @@ const LoginPage = () => {
             </button>
           </div>
 
-          {/*로그인 버튼*/}
           <button
             type="submit"
             style={{
@@ -132,7 +159,6 @@ const LoginPage = () => {
             로그인
           </button>
         </form>
-        {/*자동로그인 & 회원가입, 비밀번호 찾기 */}
         <div className={classesLogin.BottomContainer}>
           <div style={{ textAlign: "left" }}>
             <input

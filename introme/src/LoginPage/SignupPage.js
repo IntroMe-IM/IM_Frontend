@@ -9,7 +9,6 @@ const SignupPage = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [confirmPhoneNumber, setConfirmPhoneNumber] = useState("");
-
   const [showPassword, setShowPassword] = useState(false);
 
   const handleBirthdate = (e) => {
@@ -48,7 +47,7 @@ const SignupPage = () => {
   // axios 연결 코드
   const handleSubmit = async (e) => {
 
-    e.preventDefault(); 
+    e.preventDefault();
     if (password !== confirmPassword) {
       alert("비밀번호 확인과 맞게 기입해주시요!");
       return;
