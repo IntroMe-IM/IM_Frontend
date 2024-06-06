@@ -1,18 +1,18 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 //Common으로 사용하는 전체 레이아웃
 import classes from "../Common/Layout.module.css";
 //LoginPage에서만 사용하는 css
 import classesLogin from "./LoginPage.module.css";
 import axios from "axios";
-import { MemberContext } from "../ChatSpace/MemberContext";
+// import { MemberContext } from "../ChatSpace/MemberContext";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [autoLogin, setAutoLogin] = useState(false);
-  const { setMember } = useContext(MemberContext);
+  // const { setMember } = useContext(MemberContext);
 
   const navigate = useNavigate();
 
