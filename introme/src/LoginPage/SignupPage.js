@@ -78,7 +78,7 @@ const SignupPage = () => {
 
       if (response.status === 200) {
         alert("성공");
-        console.log("성공!!")
+        console.log("성공!!");
         navigate("/LoginPage");
       } else {
         alert("실패");

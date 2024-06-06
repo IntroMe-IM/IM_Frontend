@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate} from "react-router-dom";
 //Common으로 사용하는 전체 레이아웃
 import classes from "../Common/Layout.module.css";
@@ -51,8 +51,9 @@ const LoginPage = () => {
 
       if (response.status === 200) {
         alert("성공");
-        console.log("성공!!");
-        navigate("/");
+        // console.log("성공");
+        // navigate("/");
+        console.log(response.data);
       } else {
         alert("실패");
       }
