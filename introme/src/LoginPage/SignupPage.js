@@ -9,7 +9,7 @@ const SignupPage = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [verificationCode, setVerificationCode] = useState("");
+  const [confirmphoneNumber, setConfirmphoneNumber] = useState("");
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -47,7 +47,7 @@ const SignupPage = () => {
   };
 
   const toggleConfirmPhoneNumber = (e) => {
-    setVerificationCode(e.target.value);
+    setConfirmphoneNumber(e.target.value);
   };
 
   const submitNum = async () => {
@@ -85,16 +85,15 @@ const SignupPage = () => {
 
     try {
       const response = await axios.post(
-        "https://introme.co.kr/v1/member/signup",
+        `https://introme.co.kr/v1/member/signup?verificationCode=${confirmphoneNumber}`,
         {
           password,
           email,
           name,
           organization: "Introme",
           phoneNumber,
-          url: "string",
+          url: "http://introme.kr",
           birthday: new Date(birthdate).toISOString(),
-          verificationCode: "392130",
         },
         {
           headers: {
@@ -351,29 +350,29 @@ const SignupPage = () => {
               }}
               required
             />
-            {/* <button
-              onSubmit={submitNum}
+            <button
+              onClick={submitNum}
               style={{
                 backgroundColor: "#4755D7",
                 color: "#fff",
                 border: "none",
                 padding: "0.5rem 1rem",
                 borderRadius: "5px",
-                height: "6vh",
                 width: "15vh",
+                height: "6vh",
                 margin: "0.5vh",
                 cursor: "pointer",
               }}
             >
               인증번호 받기
-            </button> */}
-          </div>
+            </button>
+          </div >
 
           <div style={{ marginBottom: "1rem", position: "relative" }}>
             <input
               type="number"
               placeholder=""
-              value={verificationCode}
+              value={confirmphoneNumber}
               onChange={toggleConfirmPhoneNumber}
               style={{
                 width: "calc(100% - 30px)",
@@ -403,8 +402,8 @@ const SignupPage = () => {
           >
             회원가입
           </button>
-        </form>
-        <button
+        </form >
+        {/* <button
           onClick={submitNum}
           style={{
             backgroundColor: "#4755D7",
@@ -419,9 +418,9 @@ const SignupPage = () => {
           }}
         >
           인증번호 받기
-        </button>
-      </div>
-    </div>
+        </button> */}
+      </div >
+    </div >
   );
 };
 

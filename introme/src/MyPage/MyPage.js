@@ -26,23 +26,23 @@ const MyPage = () => {
           style={{
             borderBottom: "1px solid black",
             height: "17vh",
-            width:"95%",
-            margin:"0 auto",
+            width: "95%",
+            margin: "0 auto",
             display: "flex",
             alignItems: "center",
           }}
         >
           <div
             style={{
-              backgroundColor:"#4755D7",
+              backgroundColor: "#4755D7",
               width: "13vh",
               height: "13vh",
-              marginLeft: "4vh",
+              marginLeft: "2.5vh",
               borderRadius: "17%",
             }}
           >
             {/* <img src={myIcon} style={{width:"100%"}} /> */}
-            </div>
+          </div>
           <div
             style={{
               height: "10vh",
@@ -56,7 +56,7 @@ const MyPage = () => {
                 fontSize: "1.3rem",
               }}
             >
-             이정욱
+              이정욱
             </div>
             <div
               style={{
@@ -75,7 +75,7 @@ const MyPage = () => {
             margin: "0 auto",
             marginTop: "1.5vh",
             borderRadius: "10px",
-            backgroundColor:"#262626"
+            backgroundColor: "#262626"
           }}
         >
           <div style={{ height: "100%", width: "100%" }}>
@@ -84,7 +84,7 @@ const MyPage = () => {
                 marginTop: "2vh",
                 marginLeft: "2.5vh",
                 fontWeight: "bold",
-                color:"#FFFFFF"
+                color: "#FFFFFF"
               }}
             >
               INTROME
@@ -94,16 +94,16 @@ const MyPage = () => {
                 marginTop: "0.3vh",
                 marginLeft: "2.5vh",
                 fontWeight: "bold",
-                color:"#FFFFFF"
+                color: "#FFFFFF"
               }}
             >
               이정욱
             </div>
             <div style={{ marginTop: "1.5vh", marginLeft: "2.5vh" }}>
               {/*MainBanner와 마찬가지로 M,E,F에 관한 값을 받아와야함 */}
-              <div style={{color:"#FFFFFF"}}>M: 010-0000-0000</div>
-              <div style={{color:"#FFFFFF"}}>E: dlwjddnr@naver.com</div>
-              <div style={{color:"#FFFFFF"}}>F: 02.0000.0000</div>
+              <div style={{ color: "#FFFFFF" }}>M: 010-0000-0000</div>
+              <div style={{ color: "#FFFFFF" }}>E: dlwjddnr@naver.com</div>
+              <div style={{ color: "#FFFFFF" }}>F: 02.0000.0000</div>
             </div>
           </div>
         </div>
@@ -117,7 +117,7 @@ const MyPage = () => {
           <img
             key={index}
             src={icon}
-            style={{ margin:"1vh"}}
+            style={{ margin: "1vh" }}
             alt={`Icon ${index + 1}`}
           />
         ))}
