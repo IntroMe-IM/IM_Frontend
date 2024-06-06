@@ -1,16 +1,18 @@
-import React, { useState, useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import classes from "../Common/Layout.module.css";
 import cancleButton from "../Icon/cancleButton.png";
 import createButton from "../Icon/createButton.png";
-import { MemberContext } from "./MemberContext";
 import axios from "axios";
 
 const CreateChat = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const { member } = useContext(MemberContext);
+
   const navigate = useNavigate();
+
+  const token = localStorage.getItem("token"); // 로컬 스토리지에서 토큰 가져오기
+  const member = JSON.parse(localStorage.getItem("member")); // 로컬 스토리지에서 토큰 가져오기
 
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
@@ -26,21 +28,27 @@ const CreateChat = () => {
       return;
     }
 
+
+    
     try {
       console.log("Sending data:", {
-        author: member.author,
+        author: member.id,
         title,
         content
       });
 
-      const response = await axios.post(`https://introme.co.kr/v1/board/${member.id}`, {
+
+      const response = await axios.post("https://introme.co.kr/v1/board/", {
+
         author: member.id, // author를 member의 id로 설정합니다
         title,
         content
       }, {
         headers: {
           "Content-Type": "application/json",
-          "Accept": "application/json"
+
+          "Accept": "application/json",
+
         }
       });
 
@@ -73,7 +81,7 @@ const CreateChat = () => {
               fontWeight: "bold",
             }}
           >
-            오픈 챗팅
+            오픈 채팅
           </p>
           <div style={{ margin: "4vh" }}>
             <input
