@@ -14,7 +14,7 @@ const LoginPage = () => {
   const [autoLogin, setAutoLogin] = useState(false);
   const { setMember } = useContext(MemberContext);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);

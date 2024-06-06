@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const SignupPage = () => {
@@ -9,7 +9,7 @@ const SignupPage = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [confirmPhoneNumber, setConfirmPhoneNumber] = useState("");
+  const [verificationCode, setVerificationCode] = useState("");
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -36,7 +36,6 @@ const SignupPage = () => {
 
   const handlePhoneNumber = (e) => {
     setPhoneNumber(e.target.value);
-
   };
 
   const handleName = (e) => {
@@ -48,33 +47,62 @@ const SignupPage = () => {
   };
 
   const toggleConfirmPhoneNumber = (e) => {
-    setConfirmPhoneNumber(e.target.value);
+    setVerificationCode(e.target.value);
+  };
+
+  const submitNum = async () => {
+    try {
+      const response = await axios.post(
+        "https://introme.co.kr/v1/member/verify-phone",
+        {
+          phoneNumber,
+          verificationCode: "123456",
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+        }
+      );
+      if (response.status === 200) {
+        alert("인증번호가 발송되었습니다.");
+        console.log(response.status);
+      }
+    } catch (error) {
+      alert("인증번호 발송에 실패하였습니다.");
+      console.error(error);
+    }
   };
 
   // axios 연결 코드 비빌번호 8자리 이상
   const handleSubmit = async (e) => {
-
-    e.preventDefault(); 
+    e.preventDefault();
     if (password !== confirmPassword) {
       alert("비밀번호 확인과 맞게 기입해주시요!");
       return;
     }
 
     try {
-      const response = await axios.post("https://introme.co.kr/v1/member/signup", {
-        password,
-        email,
-        name,
-        organization: "string",
-        phoneNumber,
-        url: "string",
-        birthday: new Date(birthdate).toISOString(),
-      }, {
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
+      const response = await axios.post(
+        "https://introme.co.kr/v1/member/signup",
+        {
+          password,
+          email,
+          name,
+          organization: "Introme",
+          phoneNumber,
+          url: "string",
+          birthday: new Date(birthdate).toISOString(),
+          verificationCode: "392130",
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
         }
-      });
+      );
 
       if (response.status === 200) {
         alert("성공");
@@ -95,7 +123,7 @@ const SignupPage = () => {
       } else {
         // 요청 설정 중에 발생한 문제
         alert("등록 실패: " + error.message);
-        console.error('Error', error.message);
+        console.error("Error", error.message);
       }
       console.error(error.config);
     }
@@ -323,7 +351,8 @@ const SignupPage = () => {
               }}
               required
             />
-            <button
+            {/* <button
+              onSubmit={submitNum}
               style={{
                 backgroundColor: "#4755D7",
                 color: "#fff",
@@ -337,14 +366,14 @@ const SignupPage = () => {
               }}
             >
               인증번호 받기
-            </button>
+            </button> */}
           </div>
 
           <div style={{ marginBottom: "1rem", position: "relative" }}>
             <input
               type="number"
               placeholder=""
-              value={confirmPhoneNumber}
+              value={verificationCode}
               onChange={toggleConfirmPhoneNumber}
               style={{
                 width: "calc(100% - 30px)",
@@ -375,6 +404,22 @@ const SignupPage = () => {
             회원가입
           </button>
         </form>
+        <button
+          onClick={submitNum}
+          style={{
+            backgroundColor: "#4755D7",
+            color: "#fff",
+            border: "none",
+            padding: "0.5rem 1rem",
+            borderRadius: "5px",
+            width: "15vh",
+            height: "6vh",
+            margin: "0.5vh",
+            cursor: "pointer",
+          }}
+        >
+          인증번호 받기
+        </button>
       </div>
     </div>
   );
