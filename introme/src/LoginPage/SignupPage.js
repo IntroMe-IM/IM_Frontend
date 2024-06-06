@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useNavigate} from "react-router-dom";
+import axios from "axios";
 
 const SignupPage = () => {
   const [name, setName] = useState("");
@@ -11,6 +13,8 @@ const SignupPage = () => {
 
   const [showPassword, setShowPassword] = useState(false);
 
+  const navigate = useNavigate();
+
   const handleBirthdate = (e) => {
     setBirthdate(e.target.value);
   };
@@ -21,6 +25,9 @@ const SignupPage = () => {
 
   const handlePassword = (e) => {
     setPassword(e.target.value);
+    // if(e.target.value.length < 8 ||  e.target.value.length < 12) {
+    //   alert("8자리 이상 12자리 이하로 작성해주세요!")
+    // }
   };
 
   const handleConfirmPassword = (e) => {
@@ -29,6 +36,7 @@ const SignupPage = () => {
 
   const handlePhoneNumber = (e) => {
     setPhoneNumber(e.target.value);
+
   };
 
   const handleName = (e) => {
@@ -43,8 +51,54 @@ const SignupPage = () => {
     setConfirmPhoneNumber(e.target.value);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  // axios 연결 코드 비빌번호 8자리 이상
+  const handleSubmit = async (e) => {
+
+    e.preventDefault(); 
+    if (password !== confirmPassword) {
+      alert("비밀번호 확인과 맞게 기입해주시요!");
+      return;
+    }
+
+    try {
+      const response = await axios.post("https://introme.co.kr/v1/member/signup", {
+        password,
+        email,
+        name,
+        organization: "string",
+        phoneNumber,
+        url: "string",
+        birthday: new Date(birthdate).toISOString(),
+      }, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.status === 200) {
+        alert("성공");
+        console.log("성공!!");
+        navigate("/LoginPage");
+      } else {
+        alert("실패");
+      }
+    } catch (error) {
+      if (error.response) {
+        // 서버가 응답했지만 상태 코드가 2xx 범위에 있지 않음
+        alert("등록 실패: " + (error.response.data.message || "서버 에러"));
+        console.error(error.response.data); // 서버 응답 데이터 출력
+      } else if (error.request) {
+        // 요청이 전송되었지만 응답이 없음
+        alert("등록 실패: 서버로부터 응답이 없습니다.");
+        console.error(error.request);
+      } else {
+        // 요청 설정 중에 발생한 문제
+        alert("등록 실패: " + error.message);
+        console.error('Error', error.message);
+      }
+      console.error(error.config);
+    }
   };
 
   return (
@@ -52,7 +106,6 @@ const SignupPage = () => {
       {/*헤더 부분*/}
       <div
         style={{
-          // border: "1px solid black",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -125,7 +178,7 @@ const SignupPage = () => {
             }}
           >
             <input
-              type="number"
+              type="date"
               placeholder="생년월일"
               value={birthdate}
               onChange={handleBirthdate}
@@ -253,10 +306,12 @@ const SignupPage = () => {
             }}
           >
             <input
-              type="number"
+              type="tel"
               placeholder="휴대폰"
               value={phoneNumber}
+              // pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
               onChange={handlePhoneNumber}
+              maxLength={11}
               style={{
                 width: "calc(100% - 19.6vh)",
                 padding: "0.5rem",
