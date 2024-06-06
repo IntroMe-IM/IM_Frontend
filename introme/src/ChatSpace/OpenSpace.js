@@ -16,7 +16,7 @@ const OpenSpace = () => {
             display: "flex",
             margin: "0 auto",
             width: "95%",
-            marginTop: "7vh",
+            marginTop: "3vh",
           }}
         >
           <Link to="/OpenSpace" className={classesOpen.spaceEnable}>
