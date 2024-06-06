@@ -37,7 +37,7 @@ const MyPage = () => {
               backgroundColor:"#4755D7",
               width: "13vh",
               height: "13vh",
-              marginLeft: "4vh",
+              marginLeft: "2.5vh",
               borderRadius: "17%",
             }}
           >
