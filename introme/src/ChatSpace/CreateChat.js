@@ -1,4 +1,5 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
+
 import { Link, useNavigate } from "react-router-dom";
 import classes from "../Common/Layout.module.css";
 import cancleButton from "../Icon/cancleButton.png";
@@ -9,10 +10,14 @@ const CreateChat = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
+  const [member, setMember] = useState(null);
   const navigate = useNavigate();
 
-  const token = localStorage.getItem("token"); // 로컬 스토리지에서 토큰 가져오기
-  const member = JSON.parse(localStorage.getItem("member")); // 로컬 스토리지에서 토큰 가져오기
+  useEffect(() => {
+    const memberData = JSON.parse(localStorage.getItem("member"));
+    setMember(memberData);
+  }, []);
+
 
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
@@ -28,13 +33,13 @@ const CreateChat = () => {
       return;
     }
 
+    // const token = localStorage.getItem("token"); // 로컬 스토리지에서 토큰 가져오기
 
-    
     try {
       console.log("Sending data:", {
         author: member.id,
         title,
-        content
+        content,
       });
 
 

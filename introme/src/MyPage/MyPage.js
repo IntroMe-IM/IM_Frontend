@@ -74,7 +74,7 @@ const MyPage = () => {
                 fontSize: "1.3rem",
               }}
             >
-              이정욱
+              {memberInfo && memberInfo.name}
             </div>
             <div
               style={{
@@ -119,8 +119,8 @@ const MyPage = () => {
             </div>
             <div style={{ marginTop: "1.5vh", marginLeft: "2.5vh" }}>
               {/*MainBanner와 마찬가지로 M,E,F에 관한 값을 받아와야함 */}
-              <div style={{ color: "#FFFFFF" }}>M: 010-0000-0000</div>
-              <div style={{ color: "#FFFFFF" }}>E: dlwjddnr@naver.com</div>
+              <div style={{ color: "#FFFFFF" }}>M: {memberInfo && memberInfo.phoneNumber}</div>
+              <div style={{ color: "#FFFFFF" }}>E: {memberInfo && memberInfo.email}</div>
               <div style={{ color: "#FFFFFF" }}>F: 02.0000.0000</div>
             </div>
           </div>
@@ -129,7 +129,6 @@ const MyPage = () => {
         <img
           src={mypagebanner}
           style={{ margin: "0 auto", width: "80%", marginTop: "1.5vh" }}
-          alt="pagebanner"
         />
 
         {mypageIcons.map((icon, index) => (

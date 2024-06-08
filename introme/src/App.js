@@ -11,7 +11,7 @@ import UpdateChat from "./ChatSpace/UpdateChat";
 import UpdateProject from "./ChatSpace/UpdateProject";
 import Wallet from "./WalletPage/Wallet";
 import MyPage from "./MyPage/MyPage";
-
+import OpenSpaceDetail from "./ChatSpace/OpenSpaceDetail";
 function App() {
   return (
     <Router>
@@ -27,7 +27,7 @@ function App() {
         <Route exact path="/UpdateChat" element={<UpdateChat />} />
         <Route exact path="/Wallet" element={<Wallet />} />
         <Route exact path="/Mypage" element={<MyPage />} />
-        
+        <Route path="/OpenSpaceDetail/:id" element={<OpenSpaceDetail />} />
       </Routes>
     </Router>
   );
