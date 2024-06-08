@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+
 import { Link, useNavigate } from "react-router-dom";
 import classes from "../Common/Layout.module.css";
 import cancleButton from "../Icon/cancleButton.png";
@@ -8,6 +9,7 @@ import axios from "axios";
 const CreateChat = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+
   const [member, setMember] = useState(null);
   const navigate = useNavigate();
 
@@ -15,6 +17,7 @@ const CreateChat = () => {
     const memberData = JSON.parse(localStorage.getItem("member"));
     setMember(memberData);
   }, []);
+
 
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
@@ -39,14 +42,18 @@ const CreateChat = () => {
         content,
       });
 
+
       const response = await axios.post("https://introme.co.kr/v1/board/", {
+
         author: member.id, // author를 member의 id로 설정합니다
         title,
         content
       }, {
         headers: {
           "Content-Type": "application/json",
+
           "Accept": "application/json",
+
         }
       });
 
