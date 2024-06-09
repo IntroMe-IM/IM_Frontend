@@ -91,7 +91,7 @@ const OpenSpace = () => {
         <div style={{ marginTop: "1vh" }}>
           {Array.from({ length: 6 }, (_, index) => (
             <div
-              key={post.id}
+              key={posts.id}
               style={{
                 borderBottom: "1px solid black",
                 width: "calc(95% - 30px)",
@@ -99,9 +99,9 @@ const OpenSpace = () => {
                 padding: "7px",
                 cursor: "pointer"
               }}
-              onClick={() => handlePostClick(post.id)}
+              onClick={() => handlePostClick(posts.id)}
             >
-              <div style={{ fontWeight: "bold" }}>{post.title}</div>
+              <div style={{ fontWeight: "bold" }}>{posts.title}</div>
               <div style={{ display: "flex" }}>
                 <div>brody&emsp; </div>
                 <div>14:23&emsp;</div>
@@ -111,7 +111,7 @@ const OpenSpace = () => {
           ))}
           {loading && <div>Loading...</div>}
         </div>
-        {isLoading && <p style={{ textAlign: "center" }}>로딩 중...</p>}
+        {loading && <p style={{ textAlign: "center" }}>로딩 중...</p>}
         <Link to="/CreateChat">
           <img src={newproject} className={classesOpen.creatProject} alt="newProject" />
         </Link>
