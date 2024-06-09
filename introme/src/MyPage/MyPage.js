@@ -12,7 +12,6 @@ import mypageIcon6 from "../Icon/mypageIcon6.png";
 // import myIcon from "../Icon/myIcon.png";
 
 const MyPage = () => {
-
   const [memberInfo, setMemberInfo] = useState(null);
 
   const mypageIcons = [
@@ -37,6 +36,11 @@ const MyPage = () => {
     // LoginPage 페이지로 이동
     navigate("/LoginPage");
   };
+  //휴대폰 하이푼 추가
+  const formatPhoneNumber = (phoneNumber) => {
+    if (!phoneNumber) return "";
+    return phoneNumber.replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3");
+  };
 
   return (
     <>
@@ -59,8 +63,7 @@ const MyPage = () => {
               marginLeft: "2.5vh",
               borderRadius: "17%",
             }}
-          >
-          </div>
+          ></div>
           <div
             style={{
               height: "10vh",
@@ -74,7 +77,7 @@ const MyPage = () => {
                 fontSize: "1.3rem",
               }}
             >
-              이정욱
+              {memberInfo && memberInfo.name}
             </div>
             <div
               style={{
@@ -93,7 +96,7 @@ const MyPage = () => {
             margin: "0 auto",
             marginTop: "1.5vh",
             borderRadius: "10px",
-            backgroundColor: "#262626"
+            backgroundColor: "#262626",
           }}
         >
           <div style={{ height: "100%", width: "100%" }}>
@@ -102,7 +105,7 @@ const MyPage = () => {
                 marginTop: "2vh",
                 marginLeft: "2.5vh",
                 fontWeight: "bold",
-                color: "#FFFFFF"
+                color: "#FFFFFF",
               }}
             >
               INTROME
@@ -112,16 +115,19 @@ const MyPage = () => {
                 marginTop: "0.3vh",
                 marginLeft: "2.5vh",
                 fontWeight: "bold",
-                color: "#FFFFFF"
+                color: "#FFFFFF",
               }}
             >
               {memberInfo && memberInfo.name}
             </div>
             <div style={{ marginTop: "1.5vh", marginLeft: "2.5vh" }}>
-              {/*MainBanner와 마찬가지로 M,E,F에 관한 값을 받아와야함 */}
-              <div style={{ color: "#FFFFFF" }}>M: 010-0000-0000</div>
-              <div style={{ color: "#FFFFFF" }}>E: dlwjddnr@naver.com</div>
-              <div style={{ color: "#FFFFFF" }}>F: 02.0000.0000</div>
+              <div style={{ color: "#FFFFFF" }}>
+                Phone:&nbsp;{memberInfo && formatPhoneNumber(memberInfo.phoneNumber)}
+              </div>
+              <div style={{ color: "#FFFFFF" }}>
+                Email:&nbsp;&nbsp;{memberInfo && memberInfo.email}
+              </div>
+              <div style={{ color: "#FFFFFF" }}>Fax:&nbsp;&nbsp;02.0000.0000</div>
             </div>
           </div>
         </div>
@@ -140,7 +146,11 @@ const MyPage = () => {
             alt={`Icon ${index + 1}`}
           />
         ))}
-        <img src={mypageIcon5} onClick={handleLogout} style={{ margin: "1vh" }} />
+        <img
+          src={mypageIcon5}
+          onClick={handleLogout}
+          style={{ margin: "1vh" }}
+        />
         <NavBar />
       </div>
     </>
