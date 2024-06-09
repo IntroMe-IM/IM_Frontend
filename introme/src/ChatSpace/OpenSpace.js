@@ -2,65 +2,54 @@ import React, { useState, useEffect } from "react";
 import NavBar from "../Common/NavBar";
 import classes from "../Common/Layout.module.css";
 import classesOpen from "./OpenSpace.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import openSpace_B from "../Icon/openSpace_B.png";
 import teamSpace from "../Icon/teamSpace.png";
 import newproject from "../Icon/newProject.png";
+import axios from "axios";
 
 const OpenSpace = () => {
   const [posts, setPosts] = useState([]);
   const [page, setPage] = useState(0);
-  const [hasMore, setHasMore] = useState(true);
-  const [isLoading, setIsLoading] = useState(false);
+  const [totalPages, setTotalPages] = useState(1);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    loadPosts();
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  useEffect(() => {
-    if (page > 0) {
-      loadPosts();
+  const fetchPosts = async (page) => {
+    setLoading(true);
+    try {
+      const response = await axios.post("https://introme.co.kr/v1/board/page", { page, size: 100 });
+      const data = response.data;
+      if (page === 0) {
+        setPosts(data.content); // 페이지가 0일 때 기존 게시글을 초기화
+      } else {
+        setPosts((prevPosts) => [...prevPosts, ...data.content]); // 페이지가 0이 아닐 때 새로운 게시글 추가
+      }
+      setTotalPages(data.totalPages);
+    } catch (error) {
+      console.error("Error fetching posts:", error);
     }
-  }, [page]);
-
-  const loadPosts = () => {
-    if (isLoading || !hasMore) return;
-
-    setIsLoading(true);
-
-    fetch("https://introme.co.kr/v1/board/page", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ page, size: 7 }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setPosts((prevPosts) => {
-          const newPosts = data.content.filter(
-            (newPost) => !prevPosts.some((post) => post.id === newPost.id)
-          );
-          return [...prevPosts, ...newPosts];
-        });
-        setHasMore(!data.last);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        console.error("Failed to load posts", error);
-        setIsLoading(false);
-      });
+    setLoading(false);
   };
 
+  useEffect(() => {
+    fetchPosts(page);
+  }, [page]);
+
   const handleScroll = () => {
-    if (
-      window.innerHeight + document.documentElement.scrollTop >=
-      document.documentElement.offsetHeight - 10
-    ) {
+    const { scrollTop, clientHeight, scrollHeight } = document.documentElement;
+    if (scrollHeight - scrollTop === clientHeight && !loading && page < totalPages - 1) {
       setPage((prevPage) => prevPage + 1);
     }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [loading, page, totalPages]);
+
+  const handlePostClick = (id) => {
+    navigate(`/OpenSpaceDetail/${id}`);
   };
 
   return (
@@ -98,9 +87,9 @@ const OpenSpace = () => {
             </div>
           </Link>
         </div>
-        {/* 게시글 목록 */}
-        <div style={{ border:"1px solid black"}}>
-          {posts.map((post) => (
+        {/*팀 스페이스 작성글 */}
+        <div style={{ marginTop: "1vh" }}>
+          {Array.from({ length: 6 }, (_, index) => (
             <div
               key={post.id}
               style={{
@@ -108,22 +97,19 @@ const OpenSpace = () => {
                 width: "calc(95% - 30px)",
                 margin: "0 auto",
                 padding: "7px",
+                cursor: "pointer"
               }}
+              onClick={() => handlePostClick(post.id)}
             >
               <div style={{ fontWeight: "bold" }}>{post.title}</div>
               <div style={{ display: "flex" }}>
-                <div>{post.author}&emsp; </div>
-                <div>
-                  {new Date(post.createAt).toLocaleTimeString("ko-KR", {
-                    hour: "2-digit",
-                    minute: "2-digit",
-                  })}
-                  &emsp;
-                </div>
-                <div>조회수: {post.hit}</div>
+                <div>brody&emsp; </div>
+                <div>14:23&emsp;</div>
+                <div>조회수: {}</div>
               </div>
             </div>
           ))}
+          {loading && <div>Loading...</div>}
         </div>
         {isLoading && <p style={{ textAlign: "center" }}>로딩 중...</p>}
         <Link to="/CreateChat">

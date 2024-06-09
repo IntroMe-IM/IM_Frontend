@@ -78,6 +78,7 @@ const MyPage = () => {
               }}
             >
               {memberInfo && memberInfo.name}
+              {memberInfo && memberInfo.name}
             </div>
             <div
               style={{
@@ -135,7 +136,6 @@ const MyPage = () => {
         <img
           src={mypagebanner}
           style={{ margin: "0 auto", width: "80%", marginTop: "1.5vh" }}
-          alt="pagebanner"
         />
 
         {mypageIcons.map((icon, index) => (

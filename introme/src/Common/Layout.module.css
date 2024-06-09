@@ -1,7 +1,7 @@
 .mainLayout {
   border: 1px solid #dddddd;
   /* margin: 10px auto 30px; */
-  height: 105vh;
+  height: 95vh;
   width: 100%;
   /* border-radius:20px; */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -16,7 +16,8 @@
 .LoginPageLayout {
   border: 1px solid #dddddd;
   /* margin: 10px auto 30px; */
-  height: 100vh;
+  height: 95vh;
+  /* 네비게이션 바 높이를 고려하여 조정 */
   width: 100%;
   /* border-radius:20px; */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
