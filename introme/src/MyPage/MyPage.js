@@ -77,7 +77,7 @@ const MyPage = () => {
                 fontSize: "1.3rem",
               }}
             >
-              {memberInfo && memberInfo.name}
+              {/* {memberInfo && memberInfo.name} */}
               {memberInfo && memberInfo.name}
             </div>
             <div
