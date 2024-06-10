@@ -1,4 +1,4 @@
-.LoginPageLogo{
+.LoginPageLogo {
   /* border: 1px solid black; */
   width: 100%;
   height: 20vh;
@@ -12,14 +12,14 @@
   font-weight: bold;
 }
 
-.LoginPageContainer{
+.LoginPageContainer {
   width: 45vh;
   margin: 0 auto;
   margin-top: 5vh;
   text-align: center;
 }
 
-.BottomContainer{
+.BottomContainer {
   margin-top: 1rem;
   display: flex;
   justify-content: space-between;
