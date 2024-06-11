@@ -128,6 +128,7 @@ const MyPage = () => {
           memberInfo={memberInfo}
           formatPhoneNumber={formatPhoneNumber}
           onClick={toggleColorPicker}
+          backgroundColor={selectedColor}
         />
 
         {showColorPicker && (
