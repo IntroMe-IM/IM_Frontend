@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Card from './Card';
 import NavBar from '../Common/NavBar';
 import axios from 'axios';
 import './Wallet.css';
@@ -20,10 +19,14 @@ function Wallet() {
 
             try {
                 const response = await axios.get(`https://introme.co.kr/v1/card/shared-cards/${memberId}`);
-                const cards = response.data.map(card => ({
+                const colors = ['#FF6347', '#4682B4', '#32CD32', '#FFD700', '#6A5ACD', '#FF69B4', '#8A2BE2'];
+                const cards = response.data.map((card, index) => ({
                     id: card.id,
-                    content: `${card.name}\n${card.phoneNumber}\n${card.company}\n${card.email}`,
-                    className: 'custom-card' // 필요한 경우 스타일을 변경
+                    name: card.name,
+                    phoneNumber: card.phoneNumber,
+                    company: card.company,
+                    email: card.email,
+                    color: colors[index % colors.length]
                 }));
                 setCardsData(cards);
                 console.log("Fetched Cards Data:", cards); // 콘솔에 데이터 출력
@@ -45,11 +48,17 @@ function Wallet() {
                 {cardsData.map((card, index) => (
                     <div
                         key={card.id}
-                        style={{ '--index': index }} // CSS 변수로 index 전달
-                        className={`card ${card.className} ${extraExpandedCard === card.id ? 'extra-expanded' : ''}`}
+                        style={{ '--index': index, backgroundColor: card.color }} // CSS 변수로 index 및 색상 전달
+                        className={`card ${extraExpandedCard === card.id ? 'extra-expanded' : ''}`}
                         onClick={() => toggleCard(card.id)}
                     >
-                        <div className="card-content">{card.content}</div>
+                        <div className="card-content">
+                            <div>{card.name}</div>
+                            <strong>{card.company}</strong>
+                            <div>Phone: {card.phoneNumber}</div>
+                            <div>Email: {card.email}</div>
+                            <div>Fax: 02.0000.0000</div>
+                        </div>
                     </div>
                 ))}
             </div>
