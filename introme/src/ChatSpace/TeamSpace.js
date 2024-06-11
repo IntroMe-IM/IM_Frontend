@@ -11,12 +11,27 @@ import axios from "axios";
 
 const TeamSpace = () => {
   const [projects, setProjects] = useState([]);
-  const member = JSON.parse(localStorage.getItem("member"));
+  const [owners, setOwners] = useState({});
+  const memberId = JSON.parse(localStorage.getItem("member")).id;
 
   const fetchProjects = async () => {
     try {
-      const response = await axios.get(`https://introme.co.kr/v1/team/${member.id}`);
+      const response = await axios.get(`https://introme.co.kr/v1/team/${memberId}`);
       setProjects(response.data);
+
+      // Fetch owner names
+      const ownerIds = [...new Set(response.data.map(project => project.owner))];
+      const ownerNames = await Promise.all(ownerIds.map(async id => {
+        const res = await axios.get(`https://introme.co.kr/v1/member/${id}`);
+        return { id, name: res.data.name };
+      }));
+
+      const ownersMap = ownerNames.reduce((acc, owner) => {
+        acc[owner.id] = owner.name;
+        return acc;
+      }, {});
+      setOwners(ownersMap);
+
     } catch (error) {
       console.error("Error fetching projects:", error);
     }
@@ -102,7 +117,7 @@ const TeamSpace = () => {
                       {new Date(project.create).toLocaleDateString()}~진행중
                     </div>
                     <div style={{ color: "gray", fontSize: "0.8rem" }}>
-                      대표자: {member.name}
+                      대표자: {owners[project.owner] || "Loading..."}
                     </div>
                     <div style={{ color: "gray", fontSize: "0.8rem" }}>
                       팀원: {project.members.join(", ")}
