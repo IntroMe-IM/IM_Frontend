@@ -16,7 +16,7 @@ const UpdateChat = () => {
             fontWeight: "bold",
           }}
         >
-          오픈 챗팅
+          오픈 스페이스
         </p>
         <div style={{ margin: "4vh" }}>
           <div

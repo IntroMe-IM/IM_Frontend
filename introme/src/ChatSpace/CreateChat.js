@@ -86,7 +86,7 @@ const CreateChat = () => {
               fontWeight: "bold",
             }}
           >
-            오픈 채팅
+            오픈 스페이스
           </p>
           <div style={{ margin: "4vh" }}>
             <input
