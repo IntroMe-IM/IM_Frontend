@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../Common/NavBar";
+import MyPageInfo from "./MyPageInfo";
 import classes from "./MyPage.module.css";
+import { SketchPicker } from 'react-color';
 import mypagebanner from "../Icon/mypagebanner.png";
 import mypageIcon1 from "../Icon/mypageIcon1.png";
 import mypageIcon2 from "../Icon/mypageIcon2.png";
@@ -9,10 +11,12 @@ import mypageIcon3 from "../Icon/mypageIcon3.png";
 import mypageIcon4 from "../Icon/mypageIcon4.png";
 import mypageIcon5 from "../Icon/mypageIcon5.png";
 import mypageIcon6 from "../Icon/mypageIcon6.png";
-// import myIcon from "../Icon/myIcon.png";
 
 const MyPage = () => {
   const [memberInfo, setMemberInfo] = useState(null);
+  const [showColorPicker, setShowColorPicker] = useState(false);
+  const [selectedColor, setSelectedColor] = useState("#262626");
+  const colorPickerRef = useRef(null);
 
   const mypageIcons = [
     mypageIcon1,
@@ -27,19 +31,49 @@ const MyPage = () => {
   useEffect(() => {
     const memberData = JSON.parse(localStorage.getItem("member"));
     setMemberInfo(memberData);
+    if (memberData && memberData.backgroundColor) {
+      setSelectedColor(memberData.backgroundColor);
+    }
   }, []);
 
   const handleLogout = () => {
-    // 로컬 스토리지에서 토큰 및 회원 정보 제거
     localStorage.removeItem("token");
     localStorage.removeItem("member");
-    // LoginPage 페이지로 이동
     navigate("/LoginPage");
   };
-  //휴대폰 하이푼 추가
+
   const formatPhoneNumber = (phoneNumber) => {
     if (!phoneNumber) return "";
     return phoneNumber.replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3");
+  };
+
+  const handleColorChange = (color) => {
+    const newColor = color.hex;
+    setSelectedColor(newColor);
+    const updatedMemberInfo = { ...memberInfo, backgroundColor: newColor };
+    setMemberInfo(updatedMemberInfo);
+    localStorage.setItem("member", JSON.stringify(updatedMemberInfo));
+  };
+
+  const handleClickOutside = (event) => {
+    if (colorPickerRef.current && !colorPickerRef.current.contains(event.target)) {
+      setShowColorPicker(false);
+    }
+  };
+
+  useEffect(() => {
+    if (showColorPicker) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [showColorPicker]);
+
+  const toggleColorPicker = () => {
+    setShowColorPicker(!showColorPicker);
   };
 
   return (
@@ -77,7 +111,6 @@ const MyPage = () => {
                 fontSize: "1.3rem",
               }}
             >
-              {/* {memberInfo && memberInfo.name} */}
               {memberInfo && memberInfo.name}
             </div>
             <div
@@ -90,48 +123,21 @@ const MyPage = () => {
             </div>
           </div>
         </div>
-        <div
-          style={{
-            width: "85%",
-            height: "20vh",
-            margin: "0 auto",
-            marginTop: "1.5vh",
-            borderRadius: "10px",
-            backgroundColor: "#262626",
-          }}
-        >
-          <div style={{ height: "100%", width: "100%" }}>
-            <div
-              style={{
-                marginTop: "2vh",
-                marginLeft: "2.5vh",
-                fontWeight: "bold",
-                color: "#FFFFFF",
-              }}
-            >
-              INTROME
-            </div>
-            <div
-              style={{
-                marginTop: "0.3vh",
-                marginLeft: "2.5vh",
-                fontWeight: "bold",
-                color: "#FFFFFF",
-              }}
-            >
-              {memberInfo && memberInfo.name}
-            </div>
-            <div style={{ marginTop: "1.5vh", marginLeft: "2.5vh" }}>
-              <div style={{ color: "#FFFFFF" }}>
-                Phone:&nbsp;{memberInfo && formatPhoneNumber(memberInfo.phoneNumber)}
-              </div>
-              <div style={{ color: "#FFFFFF" }}>
-                Email:&nbsp;&nbsp;{memberInfo && memberInfo.email}
-              </div>
-              <div style={{ color: "#FFFFFF" }}>Fax:&nbsp;&nbsp;02.0000.0000</div>
-            </div>
+
+        <MyPageInfo
+          memberInfo={memberInfo}
+          formatPhoneNumber={formatPhoneNumber}
+          onClick={toggleColorPicker}
+        />
+
+        {showColorPicker && (
+          <div className={classes.ColorPickerModal} ref={colorPickerRef}>
+            <SketchPicker
+              color={selectedColor}
+              onChange={handleColorChange}
+            />
           </div>
-        </div>
+        )}
 
         <img
           src={mypagebanner}
