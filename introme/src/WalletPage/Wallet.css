@@ -1,3 +1,4 @@
+/* Wallet.css */
 .main {
     display: flex;
     justify-content: center;
@@ -35,40 +36,9 @@
     color: white;
 }
 
-.apple-cash {
-    background: linear-gradient(45deg, #e66465, #9198e5);
-    top: 0px;
-}
-
-.apple-card {
-    background: linear-gradient(45deg, #dfe4ea, #ced6e0);
-    color: black;
-    top: 60px;
-}
-
-.chargepoint {
-    background-color: #ff6f00;
-    top: 120px;
-}
-
-.rei {
-    background-color: #2e8b57;
-    top: 180px;
-}
-
-.ulta {
-    background-color: #ff4500;
-    top: 240px;
-}
-
-.equinox {
-    background-color: #4b0082;
-    top: 300px;
-}
-
-.delta {
+.custom-card {
     background-color: #1e90ff;
-    top: 360px;
+    /* 필요에 따라 색상을 수정하세요 */
 }
 
 .extra-expanded {
@@ -78,6 +48,11 @@
     height: 40%;
     transform: translate(-50%, -50%) scale(1.1);
     z-index: 20;
+}
+
+/* 카드가 겹쳐지도록 top을 조정 */
+.card {
+    top: calc(var(--index) * 3rem);
 }
 
 /* 모바일 화면에서는 확대하지 않도록 설정 */

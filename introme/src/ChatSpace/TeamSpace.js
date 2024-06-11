@@ -46,7 +46,7 @@ const TeamSpace = () => {
         </div>
         {/*팀 스페이스 작성글 */}
         <div style={{ marginTop: "1vh" }}>
-          
+
           {Array.from({ length: 5 }, (_, index) => (
             // <Link to="/ViewProject"> 이런 식으로 넘기고 자신이 보는건 수정 버튼이 있게, 아닌건 없게 만들면될듯?
             <div
@@ -81,7 +81,7 @@ const TeamSpace = () => {
                   >
                     IntroMe
                   </div>
-                  <div style={{ padding: "0.5vh",width:"100%" }}>
+                  <div style={{ padding: "0.5vh", width: "100%" }}>
                     <div style={{ color: "gray", fontSize: "0.8rem" }}>
                       03월12일~진행중
                     </div>
@@ -95,7 +95,7 @@ const TeamSpace = () => {
                 </div>
                 {/*인원 수 div */}
                 <div style={{ width: "9vh" }}>
-                  <div style={{ display: "flex", alignItems: "center", justifyContent: "center"}}>
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
                     <img
                       src={personIcon}
                       alt="personIcon"
@@ -108,7 +108,7 @@ const TeamSpace = () => {
           ))}
         </div>
         <Link to="/CreateProject">
-        <img src={newproject} className={classesTeam.creatProject} alt="newProject" />
+          <img src={newproject} className={classesTeam.creatProject} alt="newProject" />
         </Link>
         <NavBar />
       </div>
