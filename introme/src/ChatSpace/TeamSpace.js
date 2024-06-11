@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import NavBar from "../Common/NavBar";
 import classes from "../Common/Layout.module.css";
 import classesTeam from "./TeamSpace.module.css";
@@ -6,9 +6,26 @@ import { Link } from "react-router-dom";
 import openSpace from "../Icon/openSpace.png";
 import teamSpace_B from "../Icon/teamSpace_B.png";
 import personIcon from "../Icon/personIcon.png";
-import newproject from "../Icon/newProject.png"
+import newproject from "../Icon/newProject.png";
+import axios from "axios";
 
 const TeamSpace = () => {
+  const [projects, setProjects] = useState([]);
+  const member = JSON.parse(localStorage.getItem("member"));
+
+  const fetchProjects = async () => {
+    try {
+      const response = await axios.get(`https://introme.co.kr/v1/team/${member.id}`);
+      setProjects(response.data);
+    } catch (error) {
+      console.error("Error fetching projects:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchProjects();
+  }, []);
+
   return (
     <>
       <div className={classes.LoginPageLayout}>
@@ -46,16 +63,15 @@ const TeamSpace = () => {
         </div>
         {/*팀 스페이스 작성글 */}
         <div style={{ marginTop: "1vh" }}>
-
-          {Array.from({ length: 5 }, (_, index) => (
-            // <Link to="/ViewProject"> 이런 식으로 넘기고 자신이 보는건 수정 버튼이 있게, 아닌건 없게 만들면될듯?
+          {projects.map((project) => (
             <div
+              key={project.id}
               style={{
                 borderBottom: "1px solid black",
                 width: "calc(95% - 30px)",
                 margin: "0 auto",
                 padding: "7px",
-                display: "felx",
+                display: "flex",
               }}
             >
               <div style={{ display: "flex" }}>
@@ -79,17 +95,17 @@ const TeamSpace = () => {
                       height: "4vh",
                     }}
                   >
-                    IntroMe
+                    {project.name}
                   </div>
                   <div style={{ padding: "0.5vh", width: "100%" }}>
                     <div style={{ color: "gray", fontSize: "0.8rem" }}>
-                      03월12일~진행중
+                      {new Date(project.create).toLocaleDateString()}~진행중
                     </div>
                     <div style={{ color: "gray", fontSize: "0.8rem" }}>
-                      대표자: 이정욱
+                      대표자: {member.name}
                     </div>
                     <div style={{ color: "gray", fontSize: "0.8rem" }}>
-                      팀원: 이정욱, 이정욱
+                      팀원: {project.members.join(", ")}
                     </div>
                   </div>
                 </div>
@@ -100,7 +116,7 @@ const TeamSpace = () => {
                       src={personIcon}
                       alt="personIcon"
                     />
-                    <p style={{ margin: 0 }}>: 3</p>
+                    <p style={{ margin: 0 }}> : {project.members.length}</p>
                   </div>
                 </div>
               </div>
