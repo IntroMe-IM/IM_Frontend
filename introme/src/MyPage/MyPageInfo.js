@@ -1,6 +1,7 @@
 import React from "react";
 
-const MyPageInfo = ({ memberInfo, formatPhoneNumber, onClick }) => {
+const MyPageInfo = ({ memberInfo, formatPhoneNumber, onClick, backgroundColor }) => {
+    console.log(memberInfo)
     return (
         <div
             onClick={onClick}
@@ -10,7 +11,7 @@ const MyPageInfo = ({ memberInfo, formatPhoneNumber, onClick }) => {
                 margin: "0 auto",
                 marginTop: "1.5vh",
                 borderRadius: "10px",
-                backgroundColor: memberInfo ? memberInfo.backgroundColor : "#262626",
+                backgroundColor: backgroundColor || "black",
             }}
         >
             <div style={{ height: "100%", width: "100%" }}>
