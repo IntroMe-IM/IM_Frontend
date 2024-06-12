@@ -12,6 +12,8 @@ import UpdateProject from "./ChatSpace/UpdateProject";
 import Wallet from "./WalletPage/Wallet";
 import MyPage from "./MyPage/MyPage";
 import OpenSpaceDetail from "./ChatSpace/OpenSpaceDetail";
+import TeamSpaceDetail from "./ChatSpace/TeamSpaceDetail";
+
 function App() {
   return (
     <Router>
@@ -28,6 +30,7 @@ function App() {
         <Route exact path="/Wallet" element={<Wallet />} />
         <Route exact path="/Mypage" element={<MyPage />} />
         <Route path="/OpenSpaceDetail/:id" element={<OpenSpaceDetail />} />
+        <Route path="/TeamSpaceDetail/:id" element={<TeamSpaceDetail />} />
       </Routes>
     </Router>
   );

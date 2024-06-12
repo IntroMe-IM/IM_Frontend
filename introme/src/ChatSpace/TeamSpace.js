@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import NavBar from "../Common/NavBar";
 import classes from "../Common/Layout.module.css";
 import classesTeam from "./TeamSpace.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import openSpace from "../Icon/openSpace.png";
 import teamSpace_B from "../Icon/teamSpace_B.png";
 import personIcon from "../Icon/personIcon.png";
@@ -13,6 +13,7 @@ const TeamSpace = () => {
   const [projects, setProjects] = useState([]);
   const [owners, setOwners] = useState({});
   const memberId = JSON.parse(localStorage.getItem("member")).id;
+  const navigate = useNavigate();
 
   const fetchProjects = async () => {
     try {
@@ -40,6 +41,10 @@ const TeamSpace = () => {
   useEffect(() => {
     fetchProjects();
   }, []);
+
+  const handleProjectClick = (projectId) => {
+    navigate(`/TeamSpaceDetail/${projectId}`);
+  };
 
   return (
     <>
@@ -87,7 +92,9 @@ const TeamSpace = () => {
                 margin: "0 auto",
                 padding: "7px",
                 display: "flex",
+                cursor: "pointer",
               }}
+              onClick={() => handleProjectClick(project.id)}
             >
               <div style={{ display: "flex" }}>
                 {/*사진 div */}
