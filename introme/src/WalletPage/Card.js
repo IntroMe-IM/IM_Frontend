@@ -10,10 +10,17 @@ function Card({ card, index, extraExpanded, toggleCard }) {
     return (
         <div
             ref={cardRef}
-            className={`card ${card.className} ${extraExpanded ? 'extra-expanded' : ''}`}
+            className={`card ${extraExpanded ? 'extra-expanded' : ''}`}
+            style={{ backgroundColor: card.color }}
             onClick={() => toggleCard(card.id)}
         >
-            <div className="card-content">{card.content}</div>
+            <div className="card-content">
+                <div>{card.name}</div>
+                <strong>{card.company}</strong>
+                <div>Phone: {card.phoneNumber}</div>
+                <div>Email: {card.email}</div>
+                <div>Description: {card.description}</div>
+            </div>
         </div>
     );
 }
