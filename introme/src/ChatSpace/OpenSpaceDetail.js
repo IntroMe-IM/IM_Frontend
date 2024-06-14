@@ -140,17 +140,17 @@ const OpenSpaceDetail = () => {
               </div>
             </div>
           ))}
-          <form style={{ marginTop: "2rem" }}>
+          <form style={{ marginTop: "2rem", marginLeft: "10px" }}>
             <textarea
               value={newComment}
               onChange={handleCommentChange}
               placeholder="댓글을 입력하세요"
-              style={{ width: "90%", padding: "1vh", resize: "none" }}
+              style={{ width: "90%", padding: "5px", resize: "none", alignContent: "center" }}
               required
             />
             <button
               type="submit"
-              style={{ marginTop: "10px" }}
+              style={{ marginTop: "5px" }}
               onClick={handleCommentSubmit}
             >
               댓글 작성
