@@ -56,7 +56,7 @@ const CreateProject = () => {
 
   return (
     <>
-      <div className={classes.createChatLayout}>
+      <div className={classes.createProjectLayout}>
         <form onSubmit={handleSubmit}>
           <p
             style={{
