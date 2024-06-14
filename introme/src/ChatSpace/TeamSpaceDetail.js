@@ -36,9 +36,10 @@ const TeamSpaceDetail = () => {
         <>
             <div className={classes.createProjectLayout}>
                 <div style={{ marginTop: "5vh", margin: "4vh", fontSize: "1.5rem", fontWeight: "bold" }}>
-                    {team.name}
-                    <div style={{ fontSize: "0.8rem" }}>작성자: {ownerName} 생성일: {team.createdDate}</div>
+
+                    <div style={{ fontSize: "0.8rem" }}>작성자: {ownerName}</div>
                     <div style={{ fontSize: "0.8rem" }}>팀원: {team.members.join(", ")}</div>
+                    <div style={{ fontSize: "0.8rem" }}>생성일: {team.createdDate}</div>
                 </div>
 
                 <div style={{ margin: "4vh" }}>
@@ -56,7 +57,7 @@ const TeamSpaceDetail = () => {
                             fontSize: "1.5rem",
                         }}
                     >
-                        {team.project}
+                        {team.name}
                     </div>
                 </div>
                 <div style={{ margin: "4vh" }}>
