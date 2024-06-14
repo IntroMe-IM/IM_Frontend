@@ -56,7 +56,7 @@ const CreateProject = () => {
 
   return (
     <>
-      <div className={classes.createProjectLayout}>
+      <div className={classes.createLayout}>
         <form onSubmit={handleSubmit}>
           <p
             style={{
@@ -71,8 +71,8 @@ const CreateProject = () => {
           <div style={{ margin: "4vh" }}>
             <input
               placeholder="팀명 입력"
-              value={name}
-              onChange={handleNameChange}
+              value={project}
+              onChange={handleProjectChange}
               style={{
                 border: "none",
                 borderBottom: "1px solid black",
@@ -87,8 +87,8 @@ const CreateProject = () => {
           <div style={{ margin: "4vh" }}>
             <input
               placeholder="프로젝트명 입력"
-              value={project}
-              onChange={handleProjectChange}
+              value={name}
+              onChange={handleNameChange}
               style={{
                 border: "none",
                 borderBottom: "1px solid black",

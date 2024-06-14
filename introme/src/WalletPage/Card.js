@@ -5,6 +5,7 @@ function Card({ card, index, extraExpanded, toggleCard }) {
 
     useEffect(() => {
         cardRef.current.style.zIndex = extraExpanded ? 20 : index;
+        cardRef.current.style.setProperty('--index', index); // index 값을 CSS 변수로 설정
     }, [extraExpanded, index]);
 
     return (

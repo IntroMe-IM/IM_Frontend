@@ -28,7 +28,7 @@ const TeamSpace = () => {
           ownerNames[project.owner] = ownerResponse.data.name;
         }
       }));
-
+      console.log(projects)
       setProjects(projectsData);
       setOwners(ownerNames);
     } catch (error) {
