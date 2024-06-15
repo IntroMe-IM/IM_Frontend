@@ -18,21 +18,19 @@ const TeamSpace = () => {
   const fetchProjects = async () => {
     try {
       const response = await axios.get(`https://introme.co.kr/v1/team/${memberId}`);
-      setProjects(response.data);
+      const projectsData = response.data;
 
       // Fetch owner names
-      const ownerIds = [...new Set(response.data.map(project => project.owner))];
-      const ownerNames = await Promise.all(ownerIds.map(async id => {
-        const res = await axios.get(`https://introme.co.kr/v1/member/${id}`);
-        return { id, name: res.data.name };
+      const ownerNames = {};
+      await Promise.all(projectsData.map(async (project) => {
+        if (!ownerNames[project.owner]) {
+          const ownerResponse = await axios.get(`https://introme.co.kr/v1/member/${project.owner}`);
+          ownerNames[project.owner] = ownerResponse.data.name;
+        }
       }));
-
-      const ownersMap = ownerNames.reduce((acc, owner) => {
-        acc[owner.id] = owner.name;
-        return acc;
-      }, {});
-      setOwners(ownersMap);
-
+      console.log(projects)
+      setProjects(projectsData);
+      setOwners(ownerNames);
     } catch (error) {
       console.error("Error fetching projects:", error);
     }

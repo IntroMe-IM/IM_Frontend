@@ -46,7 +46,8 @@
 
 /* 카드가 겹쳐지도록 top을 조정 */
 .card {
-    top: calc(var(--index) * 3rem);
+    top: calc(var(--index) * 4rem);
+    /* 4rem 간격으로 겹치게 조정 */
 }
 
 /* 모바일 화면에서는 확대하지 않도록 설정 */
