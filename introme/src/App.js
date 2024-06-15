@@ -26,7 +26,7 @@ function App() {
         <Route exact path="/CreateProject" element={<CreateProject />} />
         <Route exact path="/CreateChat" element={<CreateChat />} />
         <Route exact path="/UpdateProject" element={<UpdateProject />} />
-        <Route exact path="/UpdateChat/:id/:memberId" element={<UpdateChat />} />
+        <Route exact path="/UpdateChat" element={<UpdateChat />} />
         <Route exact path="/Wallet" element={<Wallet />} />
         <Route exact path="/Mypage" element={<MyPage />} />
         <Route path="/OpenSpaceDetail/:id" element={<OpenSpaceDetail />} />
