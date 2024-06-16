@@ -25,10 +25,10 @@ const TeamSpace = () => {
       await Promise.all(projectsData.map(async (project) => {
         if (!ownerNames[project.owner]) {
           const ownerResponse = await axios.get(`https://introme.co.kr/v1/member/${project.owner}`);
+          console.log(project)
           ownerNames[project.owner] = ownerResponse.data.name;
         }
       }));
-      console.log(projects)
       setProjects(projectsData);
       setOwners(ownerNames);
     } catch (error) {
