@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import NavBar from "../Common/NavBar";
 import MyPageInfo from "./MyPageInfo";
 import classes from "./MyPage.module.css";
@@ -29,11 +30,27 @@ const MyPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const memberData = JSON.parse(localStorage.getItem("member"));
-    setMemberInfo(memberData);
-    if (memberData && memberData.backgroundColor) {
-      setSelectedColor(memberData.backgroundColor);
-    }
+    const fetchMemberData = async () => {
+      const member = JSON.parse(localStorage.getItem("member"));
+      const memberId = member?.id;
+
+      if (!memberId) {
+        console.error("Member ID not found");
+        return;
+      }
+
+      try {
+        const response = await axios.get(`https://introme.co.kr/v1/card/${memberId}`);
+        setMemberInfo(response.data);
+        if (response.data && response.data.backgroundColor) {
+          setSelectedColor(response.data.backgroundColor);
+        }
+      } catch (error) {
+        console.error("Error fetching member data:", error);
+      }
+    };
+
+    fetchMemberData();
   }, []);
 
   const handleLogout = () => {
@@ -74,6 +91,24 @@ const MyPage = () => {
 
   const toggleColorPicker = () => {
     setShowColorPicker(!showColorPicker);
+  };
+
+  const handleSave = async (editableInfo) => {
+    const memberId = memberInfo.id;
+    try {
+      const response = await axios.put(`https://introme.co.kr/v1/card/${memberId}`, {
+        name: editableInfo.name,
+        description: editableInfo.description,
+        company: editableInfo.company,
+        color: selectedColor
+      });
+      alert("Information updated successfully");
+      setMemberInfo(response.data);
+      localStorage.setItem("member", JSON.stringify(response.data));
+    } catch (error) {
+      console.error("Error updating member information:", error);
+      alert("Failed to update information");
+    }
   };
 
   return (
@@ -129,6 +164,7 @@ const MyPage = () => {
           formatPhoneNumber={formatPhoneNumber}
           onClick={toggleColorPicker}
           backgroundColor={selectedColor}
+          onSave={handleSave}
         />
 
         {showColorPicker && (
@@ -156,7 +192,8 @@ const MyPage = () => {
         <img
           src={mypageIcon5}
           onClick={handleLogout}
-          style={{ margin: "1vh" }}
+          style={{ margin: "1vh", cursor: "pointer", marginBottom: "10vh" }}
+          alt="Logout Icon"
         />
         <NavBar />
       </div>
