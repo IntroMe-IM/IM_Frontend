@@ -74,12 +74,15 @@ const OpenSpaceDetail = () => {
 
   const handleDelete = async () => {
     try {
-      const response = await axios.delete(`https://introme.co.kr/v1/board/${id}/${memberData.id}`);
-      console.log(response.data);
+      const response = await axios.delete(`https://introme.co.kr/v1/board/${id}/{member_id}?member_id=${memberData.id}`);
+      // console.log(response.data);
+      // console.log("아이디"+id);
+      // console.log("멤버아이디"+memberData.id);
       if (response.status === 200) {
         alert("삭제되었습니다!");
         navigate("/OpenSpace");
-        console.log(response);
+        // console.log(response);
+        // console.log(response.status);
       } else {
         alert("삭제에 실패했습니다.");
         console.error("Response status not 200:", response);
