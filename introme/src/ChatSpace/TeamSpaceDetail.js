@@ -25,11 +25,13 @@ const TeamSpaceDetail = () => {
                 console.error("Error fetching team details:", error);
             }
         };
-
         fetchTeam();
     }, [id]);
 
     const handleUpdate = async () => {
+        console.log(team.name)
+        console.log(team.project)
+        console.log(team.description)
         try {
             await axios.put(`https://introme.co.kr/v1/team/${team.id}`, {
                 name: team.name,
@@ -49,7 +51,7 @@ const TeamSpaceDetail = () => {
             [name]: value,
         }));
     };
-    console.log(team)
+
     if (!team) {
         return <div>Loading...</div>;
     }
@@ -58,7 +60,7 @@ const TeamSpaceDetail = () => {
             <div className={classes.createProjectLayout}>
                 <div style={{ marginTop: "5vh", margin: "4vh", fontSize: "1.5rem", fontWeight: "bold" }}>
                     <div style={{ fontSize: "0.8rem" }}>작성자: {ownerName}</div>
-                    <div style={{ fontSize: "0.8rem" }}>팀원: {team.members.join(", ")}</div>
+                    <div style={{ fontSize: "0.8rem" }}>팀원: {team.members}</div>
                     <div style={{ fontSize: "0.8rem" }}>생성일: {team.createdDate}</div>
                     <div style={{ fontSize: "0.8rem" }}>
                         팀명: <input
@@ -69,7 +71,7 @@ const TeamSpaceDetail = () => {
                             style={{
                                 width: `${team.name.length + 4}ch`,
                                 border: "none",
-                                borderBottom: "1px solid black",
+                                borderBottom: "none",
                                 background: "none",
                                 boxShadow: "none",
                                 outline: "none",

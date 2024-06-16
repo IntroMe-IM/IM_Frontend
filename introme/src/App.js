@@ -32,7 +32,6 @@ function App() {
         <Route exact path="/Mypage" element={<MyPage />} />
         <Route path="/OpenSpaceDetail/:id" element={<OpenSpaceDetail />} />
         <Route path="/TeamSpaceDetail/:id" element={<TeamSpaceDetail />} />
-        <Route path="/mobileOnly" element={<MobileOnly/>} />
       </Routes>
     </Router>
   );

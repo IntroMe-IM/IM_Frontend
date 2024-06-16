@@ -1,20 +1,62 @@
 .MyPageLayout {
   border: 1px solid #dddddd;
-  /* margin: 10px auto 30px; */
-  height: 120vh;
   width: 100%;
-  /* border-radius:20px; */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  /*LandingPage안에 있는 컴포넌트들을 안에 자연스럽게 집어넣기 위한 overflow */
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  /*각각의 컴포넌트들의 간격 지정*/
+  align-items: center;
+  /* 추가 */
   gap: 0.5vh;
 }
 
+.MyPageInfo {
+  width: calc(100% - 50px);
+  background: #f0f0f0;
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+.InfoItem {
+  display: flex;
+  justify-content: space-between;
+  margin: 2px 0;
+  /* text-align: center; */
+}
+
+.InfoLabel {
+  font-weight: bold;
+}
+
+.InfoValue {
+  margin-left: 10px;
+  flex: 1;
+  border: none;
+  background: none;
+  /* border-bottom: 1px solid black; */
+  outline: none;
+}
+
+.SaveButton {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #4755d7;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.SaveButton:hover {
+  background-color: #3a45c7;
+}
+
 /* MyPage.module.css */
-.ColorPickerModal {
+/* .ColorPickerModal {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -24,3 +66,22 @@
   border-radius: 10px;
   z-index: 1000;
 }
+
+.Card {
+  background-color: #000000;
+  color: white;
+  padding: 1rem;
+  border-radius: 10px;
+  width: 280px;
+  margin: auto;
+  margin-top: 2rem;
+} */
+
+/* .MyPageInfo {
+  width: calc(100% - 30px);
+  background: red;
+}
+
+.InfoItem {
+  margin-bottom: 0.5rem;
+} */

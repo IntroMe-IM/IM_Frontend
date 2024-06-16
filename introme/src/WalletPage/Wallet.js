@@ -30,7 +30,7 @@ function Wallet() {
                     color: card.color || '#000000' // color가 null이면 검정색 사용
                 }));
                 setCardsData(cards);
-                console.log("Fetched Cards Data:", cards); // 콘솔에 데이터 출력
+                // console.log("Fetched Cards Data:", cards); // 콘솔에 데이터 출력
             } catch (error) {
                 console.error("Error fetching cards:", error);
             }

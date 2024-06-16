@@ -13,7 +13,7 @@ const NavBar = () => {
       <ul className={classes.navList}>
         <li className={classes.navItem}>
           <Link to="/" className={classes.navLink}>
-            <img src={homeIcon} alt="homeIcon" style={{ width: '45%', height: 'auto'}} />
+            <img src={homeIcon} alt="homeIcon" style={{ width: '45%', height: 'auto' }} />
           </Link>
         </li>
         <li className={classes.navItem}>
@@ -22,7 +22,9 @@ const NavBar = () => {
           </Link>
         </li>
         <li className={classes.navItem}>
-          <img src={mainIcon} className={` ${classes.circle}`} alt="메인 아이콘" />
+          <Link to="/Share" className={classes.navLink}>
+            <img src={mainIcon} className={` ${classes.circle}`} alt="메인 아이콘" />
+          </Link>
         </li>
         <li className={classes.navItem}>
           <Link to="/OpenSpace" className={classes.navLink}>
